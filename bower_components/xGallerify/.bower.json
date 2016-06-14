@@ -1,0 +1,36 @@
+{
+  "name": "xGallerify",
+  "version": "0.1.0",
+  "homepage": "https://github.com/xremix/xGallerify",
+  "authors": [
+    "Toni Hoffmann <toni-hoffmann@xremix.de>"
+  ],
+  "description": "A lightweight, responsive, smart gallery based on jQuery",
+  "keywords": [
+    "gallery",
+    "xgallerify",
+    "jquery"
+  ],
+  "main": "dist/jquery.xgallerify.js",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "a5686fcc8260079915edcdb2d11b5c9fd6d4b0c7"
+  },
+  "_source": "https://github.com/xremix/xGallerify.git",
+  "_target": "*",
+  "_originalSource": "xGallerify"
+}

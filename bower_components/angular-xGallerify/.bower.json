@@ -1,0 +1,43 @@
+{
+  "name": "angular-xGallerify",
+  "homepage": "https://github.com/JohnnyTheTank/angular-xGallerify",
+  "authors": [
+    "Jonathan Hornung <jonathan.hornung@gmail.com>"
+  ],
+  "version": "1.0.2",
+  "description": "Angular wrapper for query.xgallerify by xremix",
+  "main": "dist/angular-xgallerify.min.js",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "keywords": [
+    "xgallerify",
+    "angularjs",
+    "gallery"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JohnnyTheTank/angular-xGallerify.git"
+  },
+  "dependencies": {
+    "xGallerify": "*"
+  },
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.2",
+    "commit": "cf597d293fe7940d1794f458bf2bbd9556fe60ac"
+  },
+  "_source": "https://github.com/JohnnyTheTank/angular-xGallerify.git",
+  "_target": "^1.0.2",
+  "_originalSource": "angular-xGallerify",
+  "_direct": true
+}
