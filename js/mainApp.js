@@ -1,4 +1,4 @@
-var app = angular.module('mainApp', ['ngRoute', 'ngAnimate','jtt_angular_xgallerify'])
+var app = angular.module('mainApp', ['ngRoute', 'ngAnimate','jtt_angular_xgallerify','angularModalService'])
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {

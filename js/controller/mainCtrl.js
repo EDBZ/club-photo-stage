@@ -1,10 +1,9 @@
-app.controller('mainCtrl', function($scope, $http) {
+app.controller('mainCtrl', function($scope, $http, ModalService) {
 
-  $scope.header =
-  {
+  $scope.header = {
     name: "header.html",
-     url: "../views/header.html"
-   };
+    url: "../views/header.html"
+  };
   //
   // $scope.footer =
   // {
@@ -15,55 +14,66 @@ app.controller('mainCtrl', function($scope, $http) {
 
   $http.get('/../data/argentic.json')
     .success(function(data) {
-    var argentic = $scope.argentic = data;
+      var argentic = $scope.argentic = data;
     })
     .error(function(data) {
-    // log error
-  });
+      // log error
+    });
 
   $http.get('/../data/building.json')
     .success(function(data) {
-    var building =  $scope.building = data;
+      var building = $scope.building = data;
     })
     .error(function(data) {
-    // log error
-  });
+      // log error
+    });
 
   $http.get('/../data/cemetery.json')
     .success(function(data) {
-    var cemetery =  $scope.cemetery = data;
+      var cemetery = $scope.cemetery = data;
     })
     .error(function(data) {
-    // log error
-  });
+      // log error
+    });
 
   $http.get('/../data/monument.json')
     .success(function(data) {
       var monument = $scope.monument = data;
     })
     .error(function(data) {
-    // log error
-  });
+      // log error
+    });
 
   $http.get('/../data/people.json')
     .success(function(data) {
       var people = $scope.people = data;
     })
     .error(function(data) {
-    // log error
-  });
+      // log error
+    });
 
   $http.get('/../data/sea.json')
     .success(function(data) {
       var sea = $scope.sea = data;
     })
     .error(function(data) {
-    // log error
-  });
+      // log error
+    });
 
-// $scope.images = '{"images":
-// [
-//   'argentic',+'building',+'cemetery',+'monument',+'people',+'sea'
-// ]}'
+  // var galleries = [argentic, building, cemetery, monument, people, sea] = $scope.galleries;
+
+  $scope.openModal = function() {
+    ModalService.showModal({
+      templateUrl: "/../views/modal-login.html",
+      controller:"modalCtrl"
+    });
+    // .then(function(modal) {
+    //   modal.element.modal();
+    //   modal.close.then(function(result) {
+    //     $scope.complexResult = "Name: " + result.name + ", age: " + result.age;
+    //   });
+    // });
+
+  };
 
 });
