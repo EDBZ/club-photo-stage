@@ -5,7 +5,7 @@
     "about": "sunt dolore",
     "date": "Thu Feb 16 2012 00:15:37 GMT+0100 (CET)",
     "galery": "people",
-    "path": "photo/people/1.jpg",
+    "path": "photo/people/01.jpg",
     "comments": [
       {
         "id": 0,
@@ -21,7 +21,7 @@
     "about": "laboris aliqua",
     "date": "Fri Sep 19 2008 09:40:11 GMT+0200 (CEST)",
     "galery": "people",
-    "path": "photo/people/2.jpg",
+    "path": "photo/people/02.jpg",
     "comments": [
       {
         "id": 0,
@@ -43,7 +43,7 @@
     "about": "ut pariatur",
     "date": "Wed Jul 05 2006 06:54:44 GMT+0200 (CEST)",
     "galery": "people",
-    "path": "photo/people/3.jpg",
+    "path": "photo/people/03.jpg",
     "comments": [
       {
         "id": 0,
@@ -59,7 +59,7 @@
     "about": "minim ex",
     "date": "Sat Jun 30 2007 16:43:57 GMT+0200 (CEST)",
     "galery": "people",
-    "path": "photo/people/4.jpg",
+    "path": "photo/people/04.jpg",
     "comments": [
       {
         "id": 0,
@@ -87,7 +87,7 @@
     "about": "cillum qui",
     "date": "Tue Feb 23 1988 16:28:44 GMT+0100 (CET)",
     "galery": "people",
-    "path": "photo/people/5.jpg",
+    "path": "photo/people/05.jpg",
     "comments": [
       {
         "id": 0,
@@ -109,7 +109,7 @@
     "about": "magna nisi",
     "date": "Tue Aug 20 1996 20:39:22 GMT+0200 (CEST)",
     "galery": "people",
-    "path": "photo/people/6.jpg",
+    "path": "photo/people/06.jpg",
     "comments": [
       {
         "id": 0,
@@ -137,7 +137,7 @@
     "about": "sint ullamco",
     "date": "Sun Sep 18 1988 06:14:45 GMT+0200 (CEST)",
     "galery": "people",
-    "path": "photo/people/7.jpg",
+    "path": "photo/people/07.jpg",
     "comments": [
       {
         "id": 0,
@@ -165,7 +165,7 @@
     "about": "Lorem ut",
     "date": "Fri Jul 05 2013 02:14:49 GMT+0200 (CEST)",
     "galery": "people",
-    "path": "photo/people/8.jpg",
+    "path": "photo/people/08.jpg",
     "comments": [
       {
         "id": 0,
@@ -193,7 +193,7 @@
     "about": "excepteur anim",
     "date": "Sun Apr 26 1981 13:00:56 GMT+0200 (CEST)",
     "galery": "people",
-    "path": "photo/people/9.jpg",
+    "path": "photo/people/09.jpg",
     "comments": [
       {
         "id": 0,

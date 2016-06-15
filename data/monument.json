@@ -5,7 +5,7 @@
     "about": "dolor sit",
     "date": "Thu Jan 01 2015 21:15:51 GMT+0100 (CET)",
     "galery": "monument",
-    "path": "photo/monument/1.jpg",
+    "path": "photo/monument/01.jpg",
     "comments": [
       {
         "id": 0,
@@ -33,7 +33,7 @@
     "about": "minim consectetur",
     "date": "Sun Aug 24 1980 18:55:38 GMT+0200 (CEST)",
     "galery": "monument",
-    "path": "photo/monument/2.jpg",
+    "path": "photo/monument/02.jpg",
     "comments": [
       {
         "id": 0,
@@ -61,7 +61,7 @@
     "about": "eu velit",
     "date": "Sun Aug 23 1987 13:25:40 GMT+0200 (CEST)",
     "galery": "monument",
-    "path": "photo/monument/3.jpg",
+    "path": "photo/monument/03.jpg",
     "comments": [
       {
         "id": 0,
@@ -89,7 +89,7 @@
     "about": "fugiat mollit",
     "date": "Wed Oct 24 2007 04:34:14 GMT+0200 (CEST)",
     "galery": "monument",
-    "path": "photo/monument/4.jpg",
+    "path": "photo/monument/04.jpg",
     "comments": [
       {
         "id": 0,
@@ -111,7 +111,7 @@
     "about": "consectetur culpa",
     "date": "Wed May 23 2012 04:55:58 GMT+0200 (CEST)",
     "galery": "monument",
-    "path": "photo/monument/5.jpg",
+    "path": "photo/monument/05.jpg",
     "comments": [
       {
         "id": 0,
@@ -127,7 +127,7 @@
     "about": "dolor amet",
     "date": "Sat Jan 04 2003 03:07:17 GMT+0100 (CET)",
     "galery": "monument",
-    "path": "photo/monument/6.jpg",
+    "path": "photo/monument/06.jpg",
     "comments": [
       {
         "id": 0,

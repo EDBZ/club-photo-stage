@@ -5,7 +5,7 @@
     "about": "ea nisi",
     "date": "Sat Dec 04 1971 07:01:54 GMT+0100 (CET)",
     "galery": "sea",
-    "path": "photo/sea/1.jpg",
+    "path": "photo/sea/01.jpg",
     "comments": [
       {
         "id": 0,
@@ -33,7 +33,7 @@
     "about": "duis nulla",
     "date": "Mon Jul 14 1980 01:59:49 GMT+0200 (CEST)",
     "galery": "sea",
-    "path": "photo/sea/2.jpg",
+    "path": "photo/sea/02.jpg",
     "comments": [
       {
         "id": 0,
@@ -61,7 +61,7 @@
     "about": "sit culpa",
     "date": "Tue Mar 17 1992 22:29:35 GMT+0100 (CET)",
     "galery": "sea",
-    "path": "photo/sea/3.jpg",
+    "path": "photo/sea/03.jpg",
     "comments": [
       {
         "id": 0,
