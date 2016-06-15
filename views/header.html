@@ -19,42 +19,10 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-          <a data-toggle="modal" href="views/modal-login.html">
+          <a ng-click="openModal()">
             <span class="glyphicon glyphicon-log-in"></span>
             Login</a>
       </li>
     </ul>
   </div>
 </nav>
-
-<div class="modal modal-sm fade"  ng-controller="modalCtrl" id="modal-login">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Log in</h4>
-      </div>
-      <div class="modal-body">
-		<form class="form-horizontal" role="form">
-		  <div class="form-group">
-		    <label for="name" class="col-sm-2 control-label">Name</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="name" placeholder="Your Name" ng-model="name">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label for="age" class="col-sm-2 control-label">Password</label>
-		    <div class="col-sm-10">
-		      <input type="password" class="form-control" id="inputPassword3" placeholder="password" ng-model="password">
-		    </div>
-		  </div>
-		</form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" ng-click="submit()" class="btn btn-primary" data-dismiss="modal">Submit</button>
-        <button type="button" ng-click="cancel()" class="btn">Cancel</button>
-      </div>
-    </div>
-  </div>
-</div>

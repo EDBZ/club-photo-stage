@@ -1,4 +1,4 @@
-app.controller('mainCtrl', function($scope, $http, ModalService) {
+app.controller('mainCtrl', function($scope, $http,$uibmodal) {
 
   $scope.header = {
     name: "header.html",
@@ -62,18 +62,17 @@ app.controller('mainCtrl', function($scope, $http, ModalService) {
 
   // var galleries = [argentic, building, cemetery, monument, people, sea] = $scope.galleries;
 
-  $scope.openModal = function() {
-    ModalService.showModal({
-      templateUrl: "/../views/modal-login.html",
-      controller:"modalCtrl"
-    });
-    // .then(function(modal) {
-    //   modal.element.modal();
-    //   modal.close.then(function(result) {
-    //     $scope.complexResult = "Name: " + result.name + ", age: " + result.age;
-    //   });
-    // });
+  $scope.openModal = function () {
 
-  };
-
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: '../views/modal-login.html',
+        controller: 'modalCtrl',
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+    }
 });
