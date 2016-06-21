@@ -3,37 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width" >
+
     <title>ERG Photo Dell</title>
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
-
-    <!--[if lt IE 9]> <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script> <![endif]-->
-  </head>
-  <body ng-app="mainApp" ng-controller="mainCtrl">
-
-    <div class="container">
-
-<div ng-include src="header.url" id="nav_blank"></div>
-<script type="text/ng-template" id="header.html"></script>
-
-      <div xgallerify="{ 'margin':5, 'mode':'flickr', 'lastRow':'fullwidth'}">
-        <img src="photo/argentic/01.jpg" alt=""/>
-        <img src="photo/building/01.jpg" alt=""/>
-        <img src="photo/cemetery/01.jpg" alt=""/>
-        <img src="photo/monument/01.jpg" alt=""/>
-        <img src="photo/people/01.jpg" alt=""/>
-        <img src="photo/sea/01.jpg" alt=""/>
-        <img src="photo/argentic/02.jpg" alt=""/>
-        <img src="photo/building/02.jpg" alt=""/>
-        <img src="photo/cemetery/02.jpg" alt=""/>
-        <img src="photo/monument/02.jpg" alt=""/>
-        <img src="photo/people/02.jpg" alt=""/>
-        <img src="photo/sea/02.jpg" alt=""/>
-      </div>
-
-    </div>
 
     <!-- scripts bower -->
     <script src="bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
@@ -42,10 +17,24 @@
     <script src="bower_components/angular/angular.min.js" charset="utf-8"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js" charset="utf-8"></script>
     <script src="bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
-    <script src="bower_components/satellizer/satellizer.min.js" charset="utf-8"></script>
     <script src="bower_components/angular-xGallerify/dist/angular-xgallerify.min.js" charset="utf-8"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.min.js" charset="utf-8"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js" charset="utf-8"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
+
+    <!--[if lt IE 9]> <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script> <![endif]-->
+  </head>
+  <body ng-app="mainApp" ng-controller="mainCtrl">
+
+
+      <div ng-include src="header.url" id="nav_blank"></div>
+
+
+<div class="container" ng-view>
+
+
+    </div>
+
     <!-- my scripts -->
     <script src="js/mainApp.js" charset="utf-8"></script>
     <script src="js/controller/mainCtrl.js" charset="utf-8"></script>
