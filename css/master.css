@@ -1,4 +1,4 @@
-body{
+body {
   background-color: #222;
   color: white;
 }
@@ -16,27 +16,31 @@ html, body {
   margin: 0;
   font-family: "museo", sans-serif;
 }
+.test{
+  background-color: red;
+  color: black;
+  display: inline-block;
+}
 /* ==========================================================================
    header.
    ========================================================================== */
 
-nav{
-vertical-align: baseline;
-color:#0085C3;
- display: flex;
- margin: auto;
+nav {
+  vertical-align: baseline;
+  color: #0085C3;
+  display: flex;
+  margin: auto;
 }
-nav a{
-  color:#0085C3;
-
+nav a {
+  color: #0085C3;
 }
-.navbar-brand{
+.navbar-brand {
   padding: 0;
 }
-#nav_blank{
+#nav_blank {
   height: 69px;
 }
-.logo{
+.logo {
   height: 50px;
   margin: auto;
 }
@@ -44,27 +48,29 @@ nav a{
 /* ==========================================================================
    menu_gallery
    ========================================================================== */
-#menu_gallery{
+
+#menu_gallery {
   display: flex;
   justify-content: space-between;
   width: 100%;
-
 }
-#menu_gallery a{
+#menu_gallery a {
   max-height: 218px;
   /*overflow-y: hidden;*/
   margin: 0 5px;
   display: flex;
   flex: 1;
 }
-#menu_gallery img{
+#menu_gallery img {
   max-width: 100%;
   margin: auto;
 }
+
 /* ==========================================================================
    gallery
    ========================================================================== */
-#gallery{
+
+#gallery {
   padding: 10px 0;
 }
 
@@ -72,46 +78,50 @@ nav a{
    modal
    ========================================================================== */
 
-   .modal.ng-enter {
-     transition: opacity .5s ease-out;
-     opacity: 0;
-   }
-   .modal.ng-enter.ng-enter-active {
-     opacity: 1;
-   }
-   .modal.ng-leave {
-     transition: opacity .5s ease-out;
-     opacity: 1;
-   }
-   .modal.ng-leave.ng-leave-active {
-     opacity: 0;
-   }
+.modal.ng-enter {
+  transition: opacity .5s ease-out;
+  opacity: 0;
+}
+.modal.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.modal.ng-leave {
+  transition: opacity .5s ease-out;
+  opacity: 1;
+}
+.modal.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
 /* ==========================================================================
    upload
    ========================================================================== */
-.thumbContainer{
+button{
+  color: black;
+}
+.thumbContainer {
   height: 400px;
 }
-   .thumb {
-margin:20px 5px 5px 5px;
-  }
-  .thumbName{
-    color: black;
-  }
-   form .progress {
-       line-height: 15px;
-   }
-   .progress {
-       display: inline-block;
-       width: 100px;
-       border: 3px groove ;
-   }
-   .progress div {
-       font-size: smaller;
-       background: #0085C3;
-       width: 0;
-   }
-.preview{
+.thumb {
+  margin: 20px 5px 5px 5px;
+}
+.thumbName {
+  color: black;
+}
+form .progress {
+  line-height: 15px;
+}
+.progress {
+  display: inline-block;
+  width: 100px;
+  border: 3px groove;
+}
+.progress div {
+  font-size: smaller;
+  background: #0085C3;
+  width: 0;
+}
+.preview {
   background-color: white;
   border-radius: 10px;
 }

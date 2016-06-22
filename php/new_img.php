@@ -33,24 +33,24 @@ if( !is_dir('../'.TARGET) ) {
 /************************************************************
  * Script d'upload
  *************************************************************/
-// if(!empty($_POST))
-if (!empty($_POST))
+// if(!empty($_FILE))
+if (!empty($_FILE))
 {
 
   // On verifie si le champ est rempli
-  if( !empty($_POST['fichier']['name']) )
+  if( !empty($_FILE['fichier']['name']) )
   {
     // Recuperation de l'extension du fichier
-    $extension  = pathinfo($_POST['fichier']['name'], PATHINFO_EXTENSION);
+    $extension  = pathinfo($_FILE['fichier']['name'], PATHINFO_EXTENSION);
     $extension = strtolower($extension);
 
     // On verifie l'extension du fichier
     if(in_array(strtolower($extension),$tabExt))
     {
       // On recupere les dimensions du fichier
-      $infosImg = getimagesize($_POST['fichier']['tmp_name']);
+      $infosImg = getimagesize($_FILE['fichier']['tmp_name']);
       //recuperation poid en kb
-      $poid = filesize($_POST['fichier']['tmp_name'])/1000;
+      $poid = filesize($_FILE['fichier']['tmp_name'])/1000;
 
       // On verifie le type de l'image
       if($infosImg[2] >= 1 && $infosImg[2] <= 14)
@@ -59,31 +59,31 @@ if (!empty($_POST))
         if(($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && ($poid <= MAX_SIZE))
         {
           // Parcours du tableau d'erreurs
-          if(isset($_POST['fichier']['error'])
-            && UPLOAD_ERR_OK === $_POST['fichier']['error'])
+          if(isset($_FILE['fichier']['error'])
+            && UPLOAD_ERR_OK === $_FILE['fichier']['error'])
           {
             // On renomme le fichier
             $nomImage = md5(uniqid()) .'.'. $extension;
             // Si c'est OK, on teste l'upload
-            if(move_uploaded_file($_POST['fichier']['tmp_name'], '../'.TARGET.$nomImage))
+            if(move_uploaded_file($_FILE['fichier']['tmp_name'], '../'.TARGET.$nomImage))
             {
-              $message = count($_POST);
+              $message = count($_FILE);
 /*  //=================================================================================
 $uploaddir = './files';
-$uploadfile = $uploaddir . basename($_POST['userfile']['name']);
+$uploadfile = $uploaddir . basename($_FILE['userfile']['name']);
 
-if (move_uploaded_file($_POST['userfile']['tmp_name'], $uploadfile)) {
+if (move_uploaded_file($_FILE['userfile']['tmp_name'], $uploadfile)) {
 } else {
 }
 
 echo 'Here is some more debugging info:';
-print_r($_POST);
+print_r($_FILE);
 
 // =================================================================================*/
 
               // $req = $bdd->prepare('INSERT INTO images (nom,id_user,new_nom,width,height,poid,extension,chemin,galerie,date_ajout) VALUES(?,?,?,?,?,?,?,?,?,NOW())');
               // $req->execute(array(
-              //   $_POST['fichier']['name'],
+              //   $_FILE['fichier']['name'],
               //   $_SESSION['id'],
               //   $nomImage,
               //   $infosImg[0],
@@ -91,7 +91,7 @@ print_r($_POST);
               //   $poid,
               //   $extension,
               //   TARGET.$nomImage,
-              //   $_POST['galerie']));
+              //   $_FILE['galerie']));
               //
               // $req->closeCursor();
               //

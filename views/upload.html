@@ -2,17 +2,21 @@
 
 <h4>Upload on file select</h4>
 
-<button ngf-select="uploadFiles($files)" multiple ngf-include-dir="true" ngf-resize="{width: 500, quality: .8, type: 'image/jpeg',  restoreExif: true}" ngf-resize-if="$width > 1000" accept="image/*">Select Files</button>
+<button ngf-select="uploadFiles($files)" multiple ngf-resize="{width: 800, quality: .8, type: 'image/jpeg',  restoreExif: true}" ngf-resize-if="$width > 500" accept="image/*">Select Files</button>
+<!-- <button ng-click="uploadFiles($files)">Envoyer</button> -->
 <br>
-<br>Files:
 <span class="progress" ng-show="progress >= 0">
   {{errorMsg}}
   <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
 </span>
-
 <div class="row preview">
   <div class="col-md-3 thumbContainer" ng-repeat="f in files">
+    <div class="test" ng-include="test.url"></div>
     <img class="thumb" ngf-src="f" ngf-background="f" ngf-resize="{width: 200, quality: 0.9}"/><br>
-    <span class="thumbName">{{f.name}}</span>
+    <span class="thumbName">{{f.name}}</span><br>
   </div>
 </div>
+<!-- multiple ngf-include-dir="true" -->
+<p class="test">
+  {{result}}
+</p>

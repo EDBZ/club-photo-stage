@@ -2,8 +2,6 @@
 
 class Photo
 {
-  private $_id;
-  private $_id_user;
   private $_nom;
   private $_new_nom;
   private $_width;
@@ -11,14 +9,11 @@ class Photo
   private $_poid;
   private $_extension;
   private $_chemin;
-  private $_galerie;
   private $_date_ajout;
 
 
-  public function __construct($id,$id_user,$nom,$new_nom,$width,$height,$poid,$extension,$chemin,$galerie,$date_ajout)
+  public function __construct($nom,$new_nom,$width,$height,$poid,$extension,$chemin,$date_ajout)
   {
-    $this->setId($id);
-    $this->setIdUser($id_user);
     $this->setNom($nom);
     $this->setNewNom($new_nom);
     $this->setWidth($width);
@@ -26,18 +21,12 @@ class Photo
     $this->setPoid($poid);
     $this->setExtension($extension);
     $this->setChemin($chemin);
-    $this->setGalerie($galerie);
     $this->setDateAjout($date_ajout);
   }
-
-  public function setId($id)
-  {
-    $this->_id=$id;
-  }
-  public function setIdUser($id_user)
-  {
-    $this->_id_user=$id_user;
-  }
+public function getName()
+{
+  return $this->$nom;
+}
   public function setNom($nom)
   {
     $this->_nom=$nom;
@@ -65,10 +54,6 @@ class Photo
   public function setChemin($chemin)
   {
     $this->_chemin='../'.$chemin;
-  }
-  public function setGalerie($galerie)
-  {
-    $this->_galerie=$galerie;
   }
   public function setDateAjout($date_ajout)
   {
@@ -118,7 +103,7 @@ class Photo
         header ("Content-type: image/png"); // L'image que l'on va créer est un png
         $destination = imagecreatefrompng($this->_chemin); // La photo est la destination
       }
-      $source = imagecreatefromjpeg("../use/avatar.jpg"); // Le logo est la source
+      $source = imagecreatefromjpeg("../img/dell_white.png"); // Le logo est la source
 
       // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
       $largeur_source = imagesx($source);
