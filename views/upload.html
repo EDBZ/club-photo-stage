@@ -1,0 +1,18 @@
+<a href="#/">retour index</a>
+
+<h4>Upload on file select</h4>
+
+<button ngf-select="uploadFiles($files)" multiple ngf-include-dir="true" ngf-resize="{width: 500, quality: .8, type: 'image/jpeg',  restoreExif: true}" ngf-resize-if="$width > 1000" accept="image/*">Select Files</button>
+<br>
+<br>Files:
+<span class="progress" ng-show="progress >= 0">
+  {{errorMsg}}
+  <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+</span>
+
+<div class="row preview">
+  <div class="col-md-3 thumbContainer" ng-repeat="f in files">
+    <img class="thumb" ngf-src="f" ngf-background="f" ngf-resize="{width: 200, quality: 0.9}"/><br>
+    <span class="thumbName">{{f.name}}</span>
+  </div>
+</div>

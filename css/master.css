@@ -86,3 +86,32 @@ nav a{
    .modal.ng-leave.ng-leave-active {
      opacity: 0;
    }
+/* ==========================================================================
+   upload
+   ========================================================================== */
+.thumbContainer{
+  height: 400px;
+}
+   .thumb {
+margin:20px 5px 5px 5px;
+  }
+  .thumbName{
+    color: black;
+  }
+   form .progress {
+       line-height: 15px;
+   }
+   .progress {
+       display: inline-block;
+       width: 100px;
+       border: 3px groove ;
+   }
+   .progress div {
+       font-size: smaller;
+       background: #0085C3;
+       width: 0;
+   }
+.preview{
+  background-color: white;
+  border-radius: 10px;
+}
