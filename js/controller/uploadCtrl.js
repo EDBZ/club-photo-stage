@@ -6,9 +6,7 @@ app.controller('uploadCtrl',  ['$scope', 'Upload', '$timeout','$http', function 
 
     $scope.uploadFiles = function (files) {
         $scope.files = files;
-        EXIF.getData(files,function(){
-          alert(EXIF.pretty(this));
-        });
+
         if (files && files.length) {
             Upload.upload({
                 url: 'php/managePhoto.php',
