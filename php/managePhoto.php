@@ -1,9 +1,8 @@
 <?php
-include_once('Photo.class.php');
 
 // Constantes
-define('TARGET', '../upload/');    // Repertoire cible
-define('MAX_SIZE', 500);    // Taille max en koctets du fichier
+define('TARGET', '../upload/'.$_POST[galerie].'/');    // Repertoire cible
+define('MAX_SIZE', 2000);    // Taille max en koctets du fichier
 define('WIDTH_MAX', 2200);    // Largeur max de l'image en pixels
 define('HEIGHT_MAX', 2200);    // Hauteur max de l'image en pixels
 
@@ -26,7 +25,7 @@ function reArrayFiles(&$file_post) {
 // Tableaux de donnees
 $tabExt = array('jpg','gif','png','jpeg');    // Extensions autorisees
 $infosImg = array();
-
+// $infoGal = array();
 // Variables
 $poid = '';
 $extension = '';
@@ -36,12 +35,11 @@ $nomImage = '';
 /************************************************************
  * Creation du repertoire cible si inexistant
  *************************************************************/
-if( !is_dir('../'.TARGET) ) {
-  if( !mkdir('../'.TARGET, 0777) ) {
+if( !is_dir(TARGET) ) {
+  if( !mkdir(TARGET, 0777) ) {
     exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
   }
 }
-
 if (!empty($_FILES['file'])) {
     $file_ary = reArrayFiles($_FILES['file']);
 
@@ -63,6 +61,7 @@ if (!empty($_FILES['file'])) {
           if($infosImg[2] >= 1 && $infosImg[2] <= 14)
           // On verifie les dimensions et taille de l'image
           {
+
             if(($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && ($poid <= MAX_SIZE))
             {
               // Parcours du tableau d'erreurs
@@ -72,6 +71,8 @@ if (!empty($_FILES['file'])) {
                 // On renomme le fichier
                 $nomImage = md5(uniqid()) .'.'. $extension;
                 // Si c'est OK, on teste l'upload
+                  // $infoGal=$_POST;
+
                 if($extension=='jpg'){
                   header ("Content-type: image/jpeg"); // L'image que l'on va créer est un jpeg
                   $destination = imagecreatefromjpeg($file['tmp_name']); // La photo est la destination
@@ -101,7 +102,16 @@ if (!empty($_FILES['file'])) {
                 }
                 if(move_uploaded_file($file['tmp_name'], TARGET.$nomImage))
                 {
+                  $exif = exif_read_data($_FILE['file'], 0, true);
+                  echo "test:<br />\n";
+                  foreach ($exif as $key => $section) {
+                      foreach ($section as $name => $val) {
+                          echo "$key.$name: $val<br />\n";
+                      }
+                  }
+
                   $message='upload réussi !';
+                  }
                 }
                 else
                 {

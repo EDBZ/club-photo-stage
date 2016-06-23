@@ -1,15 +1,24 @@
 app.controller('uploadCtrl',  ['$scope', 'Upload', '$timeout','$http', function ($scope, Upload, $timeout,$http) {
+    $scope.submit = function(){
+      $scope.uploadFiles($scope.files)
+    };
+
+
     $scope.uploadFiles = function (files) {
         $scope.files = files;
-        var names = [];
-
+        EXIF.getData(files,function(){
+          alert(EXIF.pretty(this));
+        });
         if (files && files.length) {
-          for (var i = files.length - 1; i >= 0; i--)
-                 names.push(i + "_" + files[i].name);
             Upload.upload({
-                url: 'php/test.php',
+                url: 'php/managePhoto.php',
                 method:'POST',
                 file : files,
+                data:{
+                  galerie:$scope.galerie,
+                  user:$scope.user
+                  // legend:$scope.legend
+                }
             }).then(function (response) {
                 $timeout(function () {
                     $scope.result = response.data;
@@ -26,6 +35,6 @@ app.controller('uploadCtrl',  ['$scope', 'Upload', '$timeout','$http', function 
     };
     $scope.test={
       name:'test.php',
-      url:'/../php/test.php'
+      url:'/../php/managePhoto.php'
     };
 }]);
