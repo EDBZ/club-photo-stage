@@ -147,17 +147,19 @@ if (!empty($_FILES['file'])) {
                   // }
 
                   // JSON encode ===========================================================================
+                  $exifArr=json_decode($_POST[exif]);
                   $json_arr = array('nom'=>$file['name'],
                                     'code'=>$codeNomImage,
                                     'photographe'=>$_POST[user],
                                     'galerie'=>$_POST[galerie],
                                     'actual_path'=>TARGET.$nomImage,
-                                    'marque'=> $_POST[marque],
-                                    'modele'=>$_POST[modele],
-                                    'focale'=>$_POST[fnumber],
-                                    'vit_obt'=>$_POST[expT],
-                                    'iso'=>$_POST[iso],
-                                    'date'=>$_POST[datePDV]);
+                                    'exif'=>$_POST[exif]);
+                                    // 'marque'=> $marque[0],
+                                    // 'modele'=>$_POST[modele],
+                                    // 'focale'=>$_POST[fnumber],
+                                    // 'vit_obt'=>$_POST[expT],
+                                    // 'iso'=>$_POST[iso],
+                                    // 'date'=>$_POST[datePDV]);
                   $photoJSON = json_encode($json_arr,JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES );
                   if( !is_dir('../data/'.$_POST[galerie].'/') ) {
                     if( !mkdir('../data/'.$_POST[galerie].'/', 0777) ) {
@@ -168,7 +170,7 @@ if (!empty($_FILES['file'])) {
                   fputs($fichierJSON,$photoJSON);
 
                   // ================================================================================
-                  $message='upload réussi !';
+                  $message='upload réussi ! '.$_POST[exif];
                 }
                 else
                 {

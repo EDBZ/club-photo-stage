@@ -2,9 +2,12 @@
 
 <h4>Upload</h4>
 <p class="test">
-  {{marque}}
-  {{test2}}
-</p>
+  {{exifArr}}
+</p><br>
+<p class="test">
+  {{result}}
+</p><br>
+
 <button ngf-select ng-model="files" ngf-multiple="true" ngf-resize="{width: 800, quality: .8, type: 'image/jpeg',  restoreExif: true}" ngf-resize-if="$width > 800" accept="image/*">Select</button><br>
 
 Drop files:
@@ -30,6 +33,3 @@ Drop files:
   </div>
 </div>
 <!-- multiple ngf-include-dir="true" -->
-<p class="test">
-  {{result}}
-</p>

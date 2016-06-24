@@ -2,27 +2,33 @@ app.controller('uploadCtrl', ['$scope', 'Upload', '$timeout', '$http', function(
   $scope.submit = function() {
     $scope.uploadFiles($scope.files)
   };
-  var marque;
-  $scope.exif = function(img) {
-    EXIF.getData(img, function() {
-      marque = 'pouet';
-      // EXIF.getTag(that, "Make");
-      modele = EXIF.getTag(that, "Model");
-      datePDV = EXIF.getTag(that, "DateTimeOriginal");
-      iso = EXIF.getTag(that, "ISOSpeedRatings");
-      fnumber = EXIF.getTag(that, "FNumber");
-      expT = EXIF.getTag(that, "ExposureTime");
-    })
-    return marque;
+
+  var exif=[];
+  $scope.exif = function(imgs) {
+    // exifJ=JSON.parse(JSON.stringify({"test":1,"test2":3}));
+    // for (var i = 0; i < imgs.length; i++) {
+      var img = imgs[0];
+      EXIF.getData(img, function() {
+        var marque = JSON.parse(JSON.stringify({"marque":EXIF.getTag(img, "Make")}));
+        var modele =JSON.parse(JSON.stringify({"modele":EXIF.getTag(img, "Model")}));
+    //     // exif.push(EXIF.getTag(img, "Make"));
+    //     // exif.push(EXIF.getTag(img, "Model"));
+    //     // exif.push(EXIF.getTag(img, "DateTimeOriginal"));
+    //     // exif.push(EXIF.getTag(img, "ISOSpeedRatings"));
+    //     // exif.push(EXIF.getTag(img, "FNumber"));
+    //     // exif.push('1/'+Math.pow(EXIF.getTag(img, "ExposureTime"),-1));
+        exif.push(marque,modele);
+      })
+      // exif.push(exifJ);
+      return exif;
+    // };
   };
-  $scope.marque = marque;
+  $scope.exifArr = exif;
 
   $scope.uploadFiles = function(files) {
     $scope.files = files;
-    $scope.test2=$scope.exif(files);
-    var that = this;
     if (files && files.length) {
-      $scope.exif($scope.files);
+      $scope.exifTest=$scope.exif($scope.files)
       Upload.upload({
           url: 'php/managePhoto.php',
           method: 'POST',
@@ -30,12 +36,7 @@ app.controller('uploadCtrl', ['$scope', 'Upload', '$timeout', '$http', function(
           data: {
             galerie: $scope.galerie,
             user: $scope.user,
-            marque: $scope.marque,
-            modele: $scope.modele,
-            datePDV: $scope.datePDV,
-            iso: $scope.iso,
-            fnumber: $scope.fnumber,
-            expT: $scope.expT
+            exif: $scope.exifArr
           }
         })
         .then(function(response) {
