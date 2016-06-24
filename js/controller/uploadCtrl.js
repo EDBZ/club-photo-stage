@@ -9,8 +9,8 @@ app.controller('uploadCtrl', ['$scope', 'Upload', '$timeout', '$http', function(
     // for (var i = 0; i < imgs.length; i++) {
       var img = imgs[0];
       EXIF.getData(img, function() {
-        var marque = JSON.parse(JSON.stringify({"marque":EXIF.getTag(img, "Make")}));
-        var modele =JSON.parse(JSON.stringify({"modele":EXIF.getTag(img, "Model")}));
+        var marque ={"marque":EXIF.getTag(img, "Make")};
+        var modele ={"modele":EXIF.getTag(img, "Model")};
     //     // exif.push(EXIF.getTag(img, "Make"));
     //     // exif.push(EXIF.getTag(img, "Model"));
     //     // exif.push(EXIF.getTag(img, "DateTimeOriginal"));

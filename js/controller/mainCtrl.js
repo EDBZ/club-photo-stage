@@ -47,14 +47,14 @@ app.controller('mainCtrl', function($scope, $http) {
 
   // $http.get fichiers JSON==========================================
 
-  $http.get('/../data/argentic.json')
+  $http.get('/../data/datatest/argentic.json')
     .success(function(data) {
       $scope.argentic = data;
     })
     .error(function(data) {
       // log error
     });
-  $http.get('/../data/building.json')
+  $http.get('/../data/datatest/building.json')
     .success(function(data) {
       $scope.building = data;
     })
@@ -62,7 +62,7 @@ app.controller('mainCtrl', function($scope, $http) {
       // log error
     });
 
-  $http.get('/../data/cemetery.json')
+  $http.get('/../data/datatest/cemetery.json')
     .success(function(data) {
       $scope.cemetery = data;
     })
@@ -70,7 +70,7 @@ app.controller('mainCtrl', function($scope, $http) {
       // log error
     });
 
-  $http.get('/../data/monument.json')
+  $http.get('/../data/datatest/monument.json')
     .success(function(data) {
       $scope.monument = data;
     })
@@ -78,7 +78,7 @@ app.controller('mainCtrl', function($scope, $http) {
       // log error
     });
 
-  $http.get('/../data/people.json')
+  $http.get('/../data/datatest/people.json')
     .success(function(data) {
       $scope.people = data;
     })
@@ -86,7 +86,7 @@ app.controller('mainCtrl', function($scope, $http) {
       // log error
     });
 
-  $http.get('/../data/sea.json')
+  $http.get('/../data/datatest/sea.json')
     .success(function(data) {
       $scope.sea = data;
     })

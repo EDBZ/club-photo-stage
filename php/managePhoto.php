@@ -153,7 +153,7 @@ if (!empty($_FILES['file'])) {
                                     'photographe'=>$_POST[user],
                                     'galerie'=>$_POST[galerie],
                                     'actual_path'=>TARGET.$nomImage,
-                                    'exif'=>$_POST[exif]);
+                                    'exif'=>$_POST[exif][marque]);
                                     // 'marque'=> $marque[0],
                                     // 'modele'=>$_POST[modele],
                                     // 'focale'=>$_POST[fnumber],
@@ -170,7 +170,7 @@ if (!empty($_FILES['file'])) {
                   fputs($fichierJSON,$photoJSON);
 
                   // ================================================================================
-                  $message='upload réussi ! '.$_POST[exif];
+                  $message='upload réussi ! '.print_r($_POST);
                 }
                 else
                 {
