@@ -68,6 +68,8 @@ if (!empty($_FILES['file'])) {
               {
                 // On renomme le fichier==================
                 $nomImage = md5(uniqid()) .'.'. $extension;
+                $codeNomImage = substr($nomImage,0,5);
+
 // ajout logo ============================================================================
                     if($extension=='jpg'){
                         header ("Content-type: image/jpeg"); // L'image que l'on va créer est un jpeg
@@ -103,60 +105,70 @@ if (!empty($_FILES['file'])) {
                 if(move_uploaded_file($file['tmp_name'], TARGET.$nomImage))
                 {
                   // EXIF ===========================================================================
-                  if(in_array(strtolower(end(explode('.', TARGET.$nomImage))), array('jpg', 'jpeg'))) // Si fichier Jpeg
-
-                  {
-                    if($exif = exif_read_data(TARGET.$nomImage, EXIF, true)) // Si le fichier $_FILE['file'] contient des infos Exif
-                  {
-
-                    foreach ($exif as $key => $section) // On parcourt la première partie du tableau multidimensionnel
-                    {
-                        foreach ($section as $name => $value) // On parcourt la seconde partie
-                        {
-                            $exif_tab[$name] .= $value;
-                           // Récupération des valeurs dans le tableau $exif_tab
-                           if($exif_tab['FocalLength']) // Si les données de la distance focale existent
-                             {
-                               $focale = round($exif_tab['FocalLength'], 0); // j'arrondis la valeur
-                               $focale = $focale." mm"; // Je rajoute l'unité millimètre
-                             }
-                             if($exif_tab['Make']) // Marque de l'appareil
-                               $marque = $exif_tab['Make'];
-                             if($exif_tab['Model'])// Modèle de l'appareil
-                               $modele = $exif_tab['Model'];
-                             if($exif_tab['ExposureTime'])// Vitesse d'obturation
-                               $vit_obt = $exif_tab['ExposureTime'];
-                             if($exif_tab['ISOSpeedRatings']) // Valeur iso
-                               $iso = $exif_tab['ISOSpeedRatings'];
-                             if($exif_tab['DateTimeOriginal'])
-                               $date = $exif_tab['DateTimeOriginal']; // Date de la prise de vue (heure de l'appareil)
-
-                             // La date est d'un format spécial, on va donc la rendre lisible
-                             // $date2 = explode(":", current(explode(" ", $date)));
-                             // $heure = explode(":", end(explode(" ", $date))); // Utile dans le cas où vous souhaitez extraire l'heure
-                             // $annee = current($date2); // Je lis la valeur courante de date2
-                             // $mois = next($date2); // Puis la suivante (c'est un tableau)
-                             // $jour = next($date2); // Puis la suivante
-
-                             // Pour obtenir l'heure, faire de même avec $heure
-                        }
-                    }
-                  }
-                  }
+                  // if(in_array(strtolower(end(explode('.', TARGET.$nomImage))), array('jpg', 'jpeg'))) // Si fichier Jpeg
+                  //
+                  // {
+                  //   if($exif = exif_read_data($nomImage, EXIF, true)) // Si le fichier $_FILE['file'] contient des infos Exif
+                  // {
+                  //
+                  //   foreach ($exif as $key => $section) // On parcourt la première partie du tableau multidimensionnel
+                  //   {
+                  //       foreach ($section as $name => $value) // On parcourt la seconde partie
+                  //       {
+                  //           $exif_tab[$name] .= $value;
+                  //          // Récupération des valeurs dans le tableau $exif_tab
+                  //          if($exif_tab['FocalLength']) // Si les données de la distance focale existent
+                  //            {
+                  //              $focale = round($exif_tab['FocalLength'], 0); // j'arrondis la valeur
+                  //              $focale = $focale." mm"; // Je rajoute l'unité millimètre
+                  //            }
+                  //            if($exif_tab['Make']) // Marque de l'appareil
+                  //              $marque = $exif_tab['Make'];
+                  //            if($exif_tab['Model'])// Modèle de l'appareil
+                  //              $modele = $exif_tab['Model'];
+                  //            if($exif_tab['ExposureTime'])// Vitesse d'obturation
+                  //              $vit_obt = $exif_tab['ExposureTime'];
+                  //            if($exif_tab['ISOSpeedRatings']) // Valeur iso
+                  //              $iso = $exif_tab['ISOSpeedRatings'];
+                  //            if($exif_tab['DateTimeOriginal'])
+                  //              $date = $exif_tab['DateTimeOriginal']; // Date de la prise de vue (heure de l'appareil)
+                  //
+                  //            // La date est d'un format spécial, on va donc la rendre lisible
+                  //            // $date2 = explode(":", current(explode(" ", $date)));
+                  //            // $heure = explode(":", end(explode(" ", $date))); // Utile dans le cas où vous souhaitez extraire l'heure
+                  //            // $annee = current($date2); // Je lis la valeur courante de date2
+                  //            // $mois = next($date2); // Puis la suivante (c'est un tableau)
+                  //            // $jour = next($date2); // Puis la suivante
+                  //
+                  //            // Pour obtenir l'heure, faire de même avec $heure
+                  //       }
+                  //   }
+                  // }
+                  // }
 
                   // JSON encode ===========================================================================
                   $json_arr = array('nom'=>$file['name'],
+                                    'code'=>$codeNomImage,
                                     'photographe'=>$_POST[user],
                                     'galerie'=>$_POST[galerie],
                                     'actual_path'=>TARGET.$nomImage,
-                                    'marque'=> $marque,
-                                    'modele'=>$modele,
-                                    'vit_obt'=>$vit_obt,
-                                    'iso'=>$iso,
-                                    'date'=>$date);
-                  $photoJSON = json_encode($json_arr,JSON_NUMERIC_CHECK );
+                                    'marque'=> $_POST[marque],
+                                    'modele'=>$_POST[modele],
+                                    'focale'=>$_POST[fnumber],
+                                    'vit_obt'=>$_POST[expT],
+                                    'iso'=>$_POST[iso],
+                                    'date'=>$_POST[datePDV]);
+                  $photoJSON = json_encode($json_arr,JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES );
+                  if( !is_dir('../data/'.$_POST[galerie].'/') ) {
+                    if( !mkdir('../data/'.$_POST[galerie].'/', 0777) ) {
+                      exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
+                    }
+                  }
+                  $fichierJSON=fopen('../data/'.$_POST[galerie].'/'.$codeNomImage.'.json','w+');
+                  fputs($fichierJSON,$photoJSON);
+
                   // ================================================================================
-                  $message='upload réussi !  '.$photoJSON;
+                  $message='upload réussi !';
                 }
                 else
                 {
