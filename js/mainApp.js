@@ -2,8 +2,8 @@ var underscore = angular.module('underscore', []);
      underscore.factory('_', function() {
          return window._; //Underscore should be loaded on the page
      });
-     
-var app = angular.module('mainApp', ['ngRoute', 'ngAnimate', 'jtt_angular_xgallerify', 'ngFileUpload','underscore'])
+// ,'angular-loading-bar'
+var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnimate',  'ngFileUpload','underscore'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {

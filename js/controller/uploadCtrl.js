@@ -1,42 +1,59 @@
 app.controller('uploadCtrl', ['$scope', 'Upload', '$timeout', '$http', function($scope, Upload, $timeout, $http) {
-  $scope.submit = function() {
-    $scope.uploadFiles($scope.files)
-  };
 
-  var exif=[];
-  $scope.exif = function(imgs) {
-    // exifJ=JSON.parse(JSON.stringify({"test":1,"test2":3}));
-    // for (var i = 0; i < imgs.length; i++) {
-      var img = imgs[0];
-      EXIF.getData(img, function() {
-        var marque ={"marque":EXIF.getTag(img, "Make")};
-        var modele ={"modele":EXIF.getTag(img, "Model")};
-    //     // exif.push(EXIF.getTag(img, "Make"));
-    //     // exif.push(EXIF.getTag(img, "Model"));
-    //     // exif.push(EXIF.getTag(img, "DateTimeOriginal"));
-    //     // exif.push(EXIF.getTag(img, "ISOSpeedRatings"));
-    //     // exif.push(EXIF.getTag(img, "FNumber"));
-    //     // exif.push('1/'+Math.pow(EXIF.getTag(img, "ExposureTime"),-1));
-        exif.push(marque,modele);
-      })
-      // exif.push(exifJ);
-      return exif;
-    // };
-  };
-  $scope.exifArr = exif;
 
-  $scope.uploadFiles = function(files) {
+  // recup EXIF =====================================================================
+  $scope.getExif = function(files) {
     $scope.files = files;
+    $scope.exif = new Array();
+    EXIF.getData(files, function() {
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        $scope.file;
+        console.log(i);
+        $scope.exif[i-1] = new Object();
+        $scope.exif[i-1].marque = EXIF.getTag(file, "Make");
+        $scope.exif[i-1].modele = EXIF.getTag(file, "Model");
+        $scope.exif.push($scope.exif[i-1]);
+      }
+    })
+    // JSON.stringify($scope.exif)
+  };
+
+
+  // $scope.exif[i-1].push(EXIF.getTag(file, "Model"));
+  // $scope.exif[i-1].push(EXIF.getTag(file, "DateTimeOriginal"));
+  // $scope.exif[i-1].push(EXIF.getTag(file, "ISOSpeedRatings"));
+  // $scope.exif[i-1].push('f:' + (EXIF.getTag(file, "FNumber")));
+  // $scope.exif[i-1].push('1/' + Math.pow(EXIF.getTag(file, "ExposureTime"), -1));
+
+  // upload=======================================================
+  $scope.uploadFiles = function(files) {
+
     if (files && files.length) {
-      $scope.exifTest=$scope.exif($scope.files)
+      // var index = files.lenght
+      $scope.files = files;
+      // $scope.marque = $scope.exifArr[0];
+      // $scope.modele = $scope.exifArr[1];
+      // $scope.datePDV = $scope.exifArr[2];
+      // $scope.iso = $scope.exifArr[3];
+      // $scope.focale = $scope.exifArr[4];
+      // $scope.vit_obt = $scope.exifArr[5];
+      // console.log($scope.exifArr);
       Upload.upload({
           url: 'php/managePhoto.php',
           method: 'POST',
           file: files,
           data: {
+            categorie: $scope.categorie,
             galerie: $scope.galerie,
             user: $scope.user,
-            exif: $scope.exifArr
+            exif: $scope.exif
+              // marque: $scope.marque,
+              // modele: $scope.modele,
+              // datePDV: $scope.datePDV,
+              // iso: $scope.iso,
+              // focale: $scope.focale,
+              // vit_obt: $scope.vit_obt
           }
         })
         .then(function(response) {
@@ -50,11 +67,14 @@ app.controller('uploadCtrl', ['$scope', 'Upload', '$timeout', '$http', function(
         }, function(evt) {
           $scope.progress =
             Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+
         });
     }
   };
-  $scope.test = {
-    name: 'test.php',
-    url: '/../php/managePhoto.php'
+
+  // envoie des données par SUBMIT ================================================
+  $scope.submit = function() {
+    $scope.uploadFiles($scope.files)
   };
+
 }]);

@@ -2,43 +2,15 @@
 <!-- <script type="text/ng-template" id="menu_gallery.html"></script> -->
 
 <div class="container">
-  <div xgallerify="{ 'margin':5, 'mode':'flickr', 'lastRow':'fullwidth'}" id="gallery">
-    <a href=""><img ng-src="photo/argentic/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/building/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/cemetery/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/monument/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/people/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/sea/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/argentic/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/building/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/cemetery/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/monument/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/people/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/sea/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/argentic/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/building/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/cemetery/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/monument/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/people/01.jpg" alt=""/>
-    </a>
-    <a href=""><img ng-src="photo/sea/01.jpg" alt=""/>
-    </a>
-
+  <div data-xgallerify="{ 'margin':5, 'mode':'flickr', 'debounceLoad':'true','debounceTime':'200', 'lastRow':'fullwidth'}" id="gallery">
+    <a href=""><img ng-src="{{firstPath(argentic)}}" alt=""/></a>
+    <a href=""><img ng-src="{{firstPath(building)}}" alt=""/></a>
+    <a href=""><img ng-src="{{firstPath(cemetery)}}" alt=""/></a>
+    <a href=""><img ng-src="{{firstPath(monument)}}" alt=""/></a>
+    <a href=""><img ng-src="{{firstPath(people)}}" alt=""/></a>
+    <a href=""><img ng-src="{{firstPath(sea)}}" alt=""/></a>
+    <a href=""><img ng-src="{{firstPath(monument)}}" alt=""/></a>
+    <a href=""><img ng-src="{{firstPath(building)}}" alt=""/></a>
+    <a href=""><img ng-src="{{firstPath(people)}}" alt=""/></a>
   </div>
 </div>

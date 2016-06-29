@@ -1,7 +1,8 @@
 <?php
-
+require_once('JSON.php');
+$json = new Services_JSON();
 // Constantes=========================================================
-define('TARGET', '../upload/'.$_POST[galerie].'/');    // Repertoire cible
+define('TARGET', '../upload/'.$_POST[categorie].'/'.$_POST[galerie].'/');    // Repertoire cible
 define('MAX_SIZE', 2000);    // Taille max en koctets du fichier
 define('WIDTH_MAX', 2200);    // Largeur max de l'image en pixels
 define('HEIGHT_MAX', 2200);    // Hauteur max de l'image en pixels
@@ -25,7 +26,6 @@ function reArrayFiles(&$file_post) {
 // Tableaux de donnees===================================================================
 $tabExt = array('jpg','gif','png','jpeg');    // Extensions autorisees
 $infosImg = array();
-// $infoGal = array();
 // Variables
 $poid = '';
 $extension = '';
@@ -33,6 +33,12 @@ $message = '';
 $nomImage = '';
 
   //Creation du repertoire cible si inexistant=========================================
+  if( !is_dir('../upload/'.$_POST[categorie].'/') ) {
+    if( !mkdir('../upload/'.$_POST[categorie].'/', 0777) ) {
+      exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
+    }
+  }
+
 if( !is_dir(TARGET) ) {
   if( !mkdir(TARGET, 0777) ) {
     exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
@@ -106,71 +112,100 @@ if (!empty($_FILES['file'])) {
                 {
                   // EXIF ===========================================================================
                   // if(in_array(strtolower(end(explode('.', TARGET.$nomImage))), array('jpg', 'jpeg'))) // Si fichier Jpeg
-                  //
                   // {
-                  //   if($exif = exif_read_data($nomImage, EXIF, true)) // Si le fichier $_FILE['file'] contient des infos Exif
-                  // {
+                  //   $exif = exif_read_data('../photo/DSCN0614_small.jpg', IFDO, true); // Si le fichier $_FILE['file'] contient des infos Exif
                   //
-                  //   foreach ($exif as $key => $section) // On parcourt la première partie du tableau multidimensionnel
-                  //   {
-                  //       foreach ($section as $name => $value) // On parcourt la seconde partie
-                  //       {
-                  //           $exif_tab[$name] .= $value;
-                  //          // Récupération des valeurs dans le tableau $exif_tab
-                  //          if($exif_tab['FocalLength']) // Si les données de la distance focale existent
-                  //            {
-                  //              $focale = round($exif_tab['FocalLength'], 0); // j'arrondis la valeur
-                  //              $focale = $focale." mm"; // Je rajoute l'unité millimètre
-                  //            }
-                  //            if($exif_tab['Make']) // Marque de l'appareil
-                  //              $marque = $exif_tab['Make'];
-                  //            if($exif_tab['Model'])// Modèle de l'appareil
-                  //              $modele = $exif_tab['Model'];
-                  //            if($exif_tab['ExposureTime'])// Vitesse d'obturation
-                  //              $vit_obt = $exif_tab['ExposureTime'];
-                  //            if($exif_tab['ISOSpeedRatings']) // Valeur iso
-                  //              $iso = $exif_tab['ISOSpeedRatings'];
-                  //            if($exif_tab['DateTimeOriginal'])
-                  //              $date = $exif_tab['DateTimeOriginal']; // Date de la prise de vue (heure de l'appareil)
+                  //     // foreach ($exif as $key => $section) // On parcourt la première partie du tableau multidimensionnel
+                  //     // {
+                  //     //     foreach ($section as $name => $value) // On parcourt la seconde partie
+                  //     //     {
+                  //             // $exif_tab[$name] .= $value;
+                  //            // Récupération des valeurs dans le tableau $exif_tab
+                  //                $focale = round($exif['FocalLength'], 0); // j'arrondis la valeur
+                  //                $focale = $focale." mm"; // Je rajoute l'unité millimètre
+                  //                $marque = $exif['Make'];
+                  //                $modele = $exif['Model'];
+                  //                $vit_obt = $exif['ExposureTime'];
+                  //                $iso = $exif['ISOSpeedRatings'];
+                  //                $datePDV = $exif['DateTimeOriginal']; // Date de la prise de vue (heure de l'appareil)
                   //
-                  //            // La date est d'un format spécial, on va donc la rendre lisible
-                  //            // $date2 = explode(":", current(explode(" ", $date)));
-                  //            // $heure = explode(":", end(explode(" ", $date))); // Utile dans le cas où vous souhaitez extraire l'heure
-                  //            // $annee = current($date2); // Je lis la valeur courante de date2
-                  //            // $mois = next($date2); // Puis la suivante (c'est un tableau)
-                  //            // $jour = next($date2); // Puis la suivante
-                  //
-                  //            // Pour obtenir l'heure, faire de même avec $heure
-                  //       }
-                  //   }
-                  // }
+                  // //
+                  // // }
+                  // // }
                   // }
 
                   // JSON encode ===========================================================================
-                  $exifArr=json_decode($_POST[exif]);
-                  $json_arr = array('nom'=>$file['name'],
+                  // ecriture données photo
+                  $json_photo_arr = array('nom'=>$file['name'],
                                     'code'=>$codeNomImage,
                                     'photographe'=>$_POST[user],
+                                    'categorie'=>$_POST[categorie],
                                     'galerie'=>$_POST[galerie],
                                     'actual_path'=>TARGET.$nomImage,
-                                    'exif'=>$_POST[exif][marque]);
-                                    // 'marque'=> $marque[0],
-                                    // 'modele'=>$_POST[modele],
-                                    // 'focale'=>$_POST[fnumber],
-                                    // 'vit_obt'=>$_POST[expT],
-                                    // 'iso'=>$_POST[iso],
-                                    // 'date'=>$_POST[datePDV]);
-                  $photoJSON = json_encode($json_arr,JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES );
-                  if( !is_dir('../data/'.$_POST[galerie].'/') ) {
-                    if( !mkdir('../data/'.$_POST[galerie].'/', 0777) ) {
+                                    'marque'=>$marque,
+                                    'modele'=>$modele,
+                                    'focale'=>$focale,
+                                    'vit_obt'=>$vit_obt,
+                                    'iso'=>$iso,
+                                    'datePDV'=>$datePDV
+                                  );
+                  // données photo format JSON
+                  $photoJSON = json_encode($json_photo_arr,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES );
+
+                  // écriture données galerie
+                  $json_galerie_arr = array('id'=>$codeNomImage,
+                                      'date_ajout'=> date('j/m/Y'),
+                                      'path'=>'../data/'.$_POST[categorie].'/'.$_POST[galerie].'/'.$codeNomImage.'.json');
+
+                  // données galerie format JSON
+                  $galerieJSON = json_encode($json_galerie_arr,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES );
+
+                  // ecriture données categorie
+                  $json_cat_arr = array('nom_galerie'=>$_POST[categorie],
+                                  'path'=>'../data/'.$_POST[categorie].'/'.$_POST[galerie].'.json');
+
+                  // données categorie format JSON
+                  $catJSON = json_encode($json_cat_arr,JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES );
+
+                  // création dossier catégorie
+                  if( !is_dir('../data/'.$_POST[categorie].'/') ) {
+                    if( !mkdir('../data/'.$_POST[categorie].'/', 0777) ) {
                       exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
                     }
                   }
-                  $fichierJSON=fopen('../data/'.$_POST[galerie].'/'.$codeNomImage.'.json','w+');
-                  fputs($fichierJSON,$photoJSON);
+                  // création dossier galerie
+                  if( !is_dir('../data/'.$_POST[categorie].'/'.$_POST[galerie].'/') ) {
+                    if( !mkdir('../data/'.$_POST[categorie].'/'.$_POST[galerie].'/', 0777) ) {
+                      exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
+                    }
+                  }
+                  // création et écriture répertoire données categorie
+                  if(!file_exists('../data/'.$_POST[categorie].'.json')){
+                    $fichier_cat_JSON = fopen('../data/'.$_POST[categorie].'.json','w+');
+                    fputs($fichier_cat_JSON,$catJSON);
+                    fclose($fichier_cat_JSON);
+                  }
+                  else {
+                    file_put_contents('../data/'.$_POST[categorie].'.json', ','.$catJSON ,FILE_APPEND);
+                  };
+
+                  // création et écriture répertoire données galerie
+                  if(!file_exists('../data/'.$_POST[categorie].'/'.$_POST[galerie].'.json')){
+                    $fichier_galerie_JSON = fopen('../data/'.$_POST[categorie].'/'.$_POST[galerie].'.json','w+');
+                    fputs($fichier_galerie_JSON,$galerieJSON);
+                    fclose($fichier_galerie_JSON);
+                  }
+                  else {
+                    file_put_contents('../data/'.$_POST[categorie].'/'.$_POST[galerie].'.json', ','.$galerieJSON ,FILE_APPEND);
+                  };
+
+                  // création et écriture repertoire données photo
+                  $fichier_photo_JSON=fopen('../data/'.$_POST[categorie].'/'.$_POST[galerie].'/'.$codeNomImage.'.json','w+');
+                  fputs($fichier_photo_JSON,$photoJSON);
+                  fclose($fichier_photo_JSON);
 
                   // ================================================================================
-                  $message='upload réussi ! '.print_r($_POST);
+                  $message='upload réussi ! '.$codeNomImage.' '.print_r($_POST);
                 }
                 else
                 {

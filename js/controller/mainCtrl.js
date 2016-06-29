@@ -113,14 +113,7 @@ app.controller('mainCtrl', function($scope, $http) {
   $scope.test = $scope.firstId(allGal);
 })
 
-.controller('testCtrl', function($scope) {
-    $scope.galleryName = 'argentic';
-    $scope.firstPath=$scope.firstPath($scope.argentic);
 
-    gallery = $scope.argentic
-      // $scope.gallery = argentic
-      // $scope.argentic
-  })
   .controller('testCtrl2', function($scope) {
     $scope.galleryName = 'building'
       // $scope.gallery = building

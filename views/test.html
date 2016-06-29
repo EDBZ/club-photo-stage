@@ -1,11 +1,11 @@
 <div class="container">
   <h1>{{galleryName}}</h1>
-  <!-- <div ng-repeat="img in argentic">
-    <img src="{{img.path}}" alt="" />
-  </div> -->
-  <a href="#/">retour index</a>
-
-  <p>{{allGal}}</p>
-  {{firstPath}}
-  <!-- <p>{{gallery}}</p> -->
+  <a href="#/">retour index</a><br>
+<p class="test">
+  {{galeries}}
+  {{pouet}}
+</p>
+<div ng-repeat="gal in galeries">
+  {{gal.nom_galerie}}
+</div>
 </div>
