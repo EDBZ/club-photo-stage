@@ -17,6 +17,8 @@ html, body {
   font-family: "museo", sans-serif;
 }
 .test {
+  width: 100%;
+  margin: 5px;
   background-color: red;
   color: black;
   display: inline-block;
@@ -98,12 +100,14 @@ nav a {
 /* ==========================================================================
    upload
    ========================================================================== */
-
+.form_upload{
+  height: 250px;
+}
 button {
   color: black;
 }
 .thumbContainer {
-  height: 400px;
+  height: 350px;
 }
 .thumb {
   margin: 20px 5px 5px 5px;
@@ -111,7 +115,7 @@ button {
 .thumbName {
   color: black;
 }
-form .progress {
+/*form .progress {
   line-height: 15px;
 }
 .progress {
@@ -123,18 +127,22 @@ form .progress {
   font-size: smaller;
   background: #0085C3;
   width: 0;
-}
+}*/
 .preview {
   background-color: white;
   border-radius: 10px;
 }
 .drop-box {
-  width: 25%;
-  height: 100px;
+  display: flex;
+  margin-bottom: 15px;
+  height: 180px;
   color: #0085C3;
   background-color: white;
   border-radius: 10px;
   border: 1px dashed #0085C3;
+}
+.drop-box span{
+  margin: auto;
 }
 .choixUpload{
   color:black;

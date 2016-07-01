@@ -10,23 +10,23 @@ var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnim
         templateUrl: 'views/main_gallery.html',
         controller: 'mainCtrl',
       })
-      .when('/test', {
+      .when('/erg', {
         templateUrl: 'views/test.html',
         controller: 'testCtrl'
       })
-      .when('/test2', {
+      .when('/cfe', {
         templateUrl: 'views/test.html',
         controller: 'testCtrl2'
       })
-      .when('/test3', {
+      .when('/customer_visit', {
         templateUrl: 'views/test.html',
         controller: 'testCtrl3'
       })
-      .when('/test4', {
+      .when('/charity', {
         templateUrl: 'views/test.html',
         controller: 'testCtrl4'
       })
-      .when('/test5', {
+      .when('/internal', {
         templateUrl: 'views/test.html',
         controller: 'testCtrl5'
       })

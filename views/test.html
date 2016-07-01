@@ -1,11 +1,17 @@
 <div class="container">
   <h1>{{galleryName}}</h1>
   <a href="#/">retour index</a><br>
-<p class="test">
-  {{galeries}}
+<!-- <pre class="test">
+  {{error}}
   {{pouet}}
-</p>
-<div ng-repeat="gal in galeries">
-  {{gal.nom_galerie}}
+</pre> -->
+    <div ng-repeat="gal in galeries" class="Row">
+<div class="row col-sm-5" style="margin:5px">
+  <img ng-src="{{gal.info_photo.actual_path}}" alt="" class="col-sm-6"/>
+  <pre>
+    {{gal.info_photo.photographe}}
+  </pre>
+  </div>
 </div>
+
 </div>

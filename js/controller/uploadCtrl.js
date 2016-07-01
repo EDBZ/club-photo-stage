@@ -45,6 +45,7 @@ app.controller('uploadCtrl', ['$scope', 'Upload', '$timeout', '$http', function(
           file: files,
           data: {
             categorie: $scope.categorie,
+            s_categorie : $scope.s_categorie,
             galerie: $scope.galerie,
             user: $scope.user,
             exif: $scope.exif
