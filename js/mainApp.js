@@ -2,8 +2,9 @@ var underscore = angular.module('underscore', []);
      underscore.factory('_', function() {
          return window._; //Underscore should be loaded on the page
      });
-// ,'angular-loading-bar'
-var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnimate',  'ngFileUpload','underscore'])
+
+var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnimate',  'ngFileUpload','underscore','angular-loading-bar'])
+
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
@@ -11,24 +12,24 @@ var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnim
         controller: 'mainCtrl',
       })
       .when('/erg', {
-        templateUrl: 'views/test.html',
-        controller: 'testCtrl'
+        templateUrl: 'views/categorie.html',
+        controller: 'ergCtrl'
       })
       .when('/cfe', {
-        templateUrl: 'views/test.html',
-        controller: 'testCtrl2'
+        templateUrl: 'views/categorie.html',
+        controller: 'cfeCtrl'
       })
       .when('/customer_visit', {
-        templateUrl: 'views/test.html',
-        controller: 'testCtrl3'
+        templateUrl: 'views/categorie.html',
+        controller: 'customer_visitCtrl'
       })
       .when('/charity', {
-        templateUrl: 'views/test.html',
-        controller: 'testCtrl4'
+        templateUrl: 'views/categorie.html',
+        controller: 'charityCtrl'
       })
       .when('/internal', {
-        templateUrl: 'views/test.html',
-        controller: 'testCtrl5'
+        templateUrl: 'views/categorie.html',
+        controller: 'internalCtrl'
       })
       .when('/upload', {
         templateUrl: 'views/upload.html',
@@ -37,4 +38,5 @@ var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnim
       .otherwise({
         redirectTo: '/'
       })
-  }]);
+  }])
+;

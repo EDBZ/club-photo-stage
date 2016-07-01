@@ -1,37 +1,7 @@
 app.controller('mainCtrl', function($scope, $http) {
 
   // variables globales=======================
-  var dataA = [];
-  var dataB = [];
-  var dataC = [];
-  var dataM = [];
-  var dataP = [];
-  var dataS = [];
-  var allGal = [{
-    "id": 0,
-    "name": "argentic",
-    "gallery": argentic
-  }, {
-    "id": 1,
-    "name": "building",
-    "gallery": building
-  }, {
-    "id": 2,
-    "name": "cemetery",
-    "gallery": cemetery
-  }, {
-    "id": 3,
-    "name": "monument",
-    "gallery": monument
-  }, {
-    "id": 4,
-    "name": "people",
-    "gallery": people
-  }, {
-    "id": 5,
-    "name": "sea",
-    "gallery": sea
-  }];
+
 
   // includes==============================================
 
@@ -95,13 +65,6 @@ app.controller('mainCtrl', function($scope, $http) {
     });
 
 
-  var argentic = $scope.argentic;
-  var building = $scope.building;
-  var cemetery = $scope.cemetery;
-  var monument = $scope.monument;
-  var people = $scope.people;
-  var sea = $scope.sea;
-  $scope.allGal = allGal;
 
   $scope.firstId = function(json) {
     return _.first(json);
@@ -110,27 +73,4 @@ app.controller('mainCtrl', function($scope, $http) {
     return $scope.firstId(json)
       .path
   };
-  $scope.test = $scope.firstId(allGal);
-})
-
-
-  .controller('testCtrl2', function($scope) {
-    $scope.galleryName = 'building'
-      // $scope.gallery = building
-
-  })
-  .controller('testCtrl3', function($scope) {
-    $scope.galleryName = 'cemetery'
-      // $scope.gallery = cemetery
-
-  })
-  .controller('testCtrl4', function($scope) {
-    $scope.galleryName = 'monument'
-      // $scope.gallery = monument
-
-  })
-  .controller('testCtrl5', function($scope) {
-    $scope.galleryName = 'people'
-      // $scope.gallery = people
-
-  });
+});

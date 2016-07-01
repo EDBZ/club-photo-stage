@@ -17,8 +17,6 @@
 
 
 <form class="form-horizontal col-sm-6" role="form">
-  <!-- ="exif(files)" -->
-  <!-- ngf-resize="{width: 800, quality: .8, type: 'image/jpeg',  restoreExif: true}" ngf-resize-if="$width > 800" -->
   <div ngf-drop ng-model="files" ngf-resize="{width: 800, quality: .8, type: 'image/jpeg',  restoreExif: true}" ngf-resize-if="$width > 800" ngf-multiple="true" accept="image/*" class="drop-box">
     <span>DROP HERE !</span>
   </div>
@@ -40,7 +38,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="control-label col-sm-4" for="categorie">Sous-categorie:</label>
+    <label class="control-label col-sm-4" for="s_categorie">Sous-categorie:</label>
     <div class="col-sm-8">
       <input required type="text" class="form-control" id="s_categorie" name="s_categorie" value="Nom de la sous-categorie"  ng-model="s_categorie" placeholder="Nom de la sous-categorie">
     </div>
@@ -64,28 +62,7 @@
     </div>
   </div>
 </form>
-
 </div>
-<!-- <input type="text" name="categorie" value="Nom de la categorie" ng-model="categorie" class="choixUpload"><br>
-<input type="text" name="galerie" value="Nom de la galerie" ng-model="galerie" class="choixUpload"><br>
-<input type="text" name="user" value="Photographe" ng-model="user" class="choixUpload"><br>
-<hr>
-<button type="submit " ng-click="submit()">Envoyer</button>
-<br> -->
-<!-- <span class="progress" ng-show="progress >= 0">
-  {{errorMsg}}
-  <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-</span> -->
-<!-- <div class="row">
-  <div ng-repeat="file in files" class="col-sm-3">
-    <input type="hidden" name="exifData" value="{{file.exifdata}}" ng-model="exifData">
-    <div ng-repeat="ele in file.exifdata">
-      <p>
-        {{ele}}
-      </p>
-    </div>
-  </div>
-</div><br> -->
 
 <div class="row preview">
   <div class="col-md-3 thumbContainer" ng-repeat="f in files">

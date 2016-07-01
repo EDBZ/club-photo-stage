@@ -1,6 +1,12 @@
 <?php
+
+// Renommer les dossiers=====================================================
+$categorie = strtolower(str_replace(' ','_',$_POST[categorie]));
+$s_categorie = strtolower(str_replace(' ','_',$_POST[s_categorie]));
+$galerie = strtolower(str_replace(' ','_',$_POST[galerie]));
+
 // Constantes=========================================================
-define('TARGET', '../upload/'.$_POST[categorie].'/'.$_POST[s_categorie].'/'.$_POST[galerie].'/');    // Repertoire cible
+define('TARGET', '../upload/'.$categorie.'/'.$s_categorie.'/'.$galerie.'/');    // Repertoire cible
 define('MAX_SIZE', 2000);    // Taille max en koctets du fichier
 define('WIDTH_MAX', 2200);    // Largeur max de l'image en pixels
 define('HEIGHT_MAX', 2200);    // Hauteur max de l'image en pixels
@@ -21,7 +27,7 @@ function reArrayFiles(&$file_post) {
     return $file_ary;
 }
 
-// plop==================================================================================
+// parcour tableau multidimentionnel==================================================================================
 function in_array_r($needle, $haystack, $strict = false){
 foreach($haystack as $item){
    if(is_array($item)){
@@ -48,15 +54,14 @@ $extension = '';
 $message = '';
 $nomImage = '';
 
-
   //Creation du repertoire cible si inexistant=========================================
-  if( !is_dir('../upload/'.$_POST[categorie].'/') ) {
-    if( !mkdir('../upload/'.$_POST[categorie].'/', 0777) ) {
+  if( !is_dir('../upload/'.$categorie.'/') ) {
+    if( !mkdir('../upload/'.$categorie.'/', 0777) ) {
       exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
     }
   }
-  if( !is_dir('../upload/'.$_POST[categorie].'/'.$_POST[s_categorie].'/') ) {
-    if( !mkdir('../upload/'.$_POST[categorie].'/'.$_POST[s_categorie].'/', 0777) ) {
+  if( !is_dir('../upload/'.$categorie.'/'.$s_categorie.'/') ) {
+    if( !mkdir('../upload/'.$categorie.'/'.$s_categorie.'/', 0777) ) {
       exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
     }
   }
@@ -112,8 +117,8 @@ if (!empty($_FILES['file'])) {
                     // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
                     $largeur_source = imagesx($source);
                     $hauteur_source = imagesy($source);
-                    $largeur_destination = $infosImg[0];
-                    $hauteur_destination = $infosImg[1];
+                    $largeur_destination = imagesx($file['tmp_name']);
+                    $hauteur_destination = imagesy($file['tmp_name']);
 
                     // On veut placer le logo en bas à droite, on calcule les coordonnées où on doit placer le logo sur la photo
                     $destination_x = 800 - $largeur_source;
@@ -159,7 +164,7 @@ if (!empty($_FILES['file'])) {
                   // ecriture données categorie
                   $json_cat_arr = array('sous-categorie'=>$_POST[s_categorie],
                     'nom_galerie'=>$_POST[galerie],
-                  'path'=>'../data/'.$_POST[categorie].'/'.$_POST[galerie].'.json');
+                  'path'=>'../data/'.$categorie.'/'.$galerie.'.json');
 
                   // données galerie format JSON
                   $galerieJSON = json_encode($json_galerie_arr,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES,2 );
@@ -168,25 +173,25 @@ if (!empty($_FILES['file'])) {
                   $catJSON = json_encode($json_cat_arr,JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES );
 
                   // création dossier catégorie
-                  if( !is_dir('../data/'.$_POST[categorie].'/') ) {
-                    if( !mkdir('../data/'.$_POST[categorie].'/', 0777) ) {
+                  if( !is_dir('../data/'.$categorie.'/') ) {
+                    if( !mkdir('../data/'.$categorie.'/', 0777) ) {
                       exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
                     }
                   }
 
                    // création et écriture répertoire données categorie
-                  if(!file_exists('../data/'.$_POST[categorie].'.json')){
-                    $fichier_cat_JSON = fopen('../data/'.$_POST[categorie].'.json','w+');
+                  if(!file_exists('../data/'.$categorie.'.json')){
+                    $fichier_cat_JSON = fopen('../data/'.$categorie.'.json','w+');
                     fputs($fichier_cat_JSON,'[');
                     fputs($fichier_cat_JSON,$catJSON);
                     fputs($fichier_cat_JSON,']');
                     fclose($fichier_cat_JSON);
                   }
                   else {
-                    $readjson = json_decode(file_get_contents('../data/'.$_POST[categorie].'.json'),true);
+                    $readjson = json_decode(file_get_contents('../data/'.$categorie.'.json'),true);
 
-                      if(!in_array_r('../data/'.$_POST[categorie].'/'.$_POST[galerie].'.json', $readjson)){
-                        $fichier_cat_JSON = fopen('../data/'.$_POST[categorie].'.json','r+');                    fseek($fichier_cat_JSON,-1,SEEK_END);
+                      if(!in_array_r('../data/'.$categorie.'/'.$galerie.'.json', $readjson)){
+                        $fichier_cat_JSON = fopen('../data/'.$categorie.'.json','r+');                    fseek($fichier_cat_JSON,-1,SEEK_END);
                         fputs($fichier_cat_JSON,','.$catJSON);
                         fputs($fichier_cat_JSON,']');
                         fclose($fichier_cat_JSON);
@@ -194,15 +199,15 @@ if (!empty($_FILES['file'])) {
                   };
 
                   // création et écriture répertoire données galerie
-                  if(!file_exists('../data/'.$_POST[categorie].'/'.$_POST[galerie].'.json')){
-                    $fichier_galerie_JSON = fopen('../data/'.$_POST[categorie].'/'.$_POST[galerie].'.json','w+');
+                  if(!file_exists('../data/'.$categorie.'/'.$galerie.'.json')){
+                    $fichier_galerie_JSON = fopen('../data/'.$categorie.'/'.$galerie.'.json','w+');
                     fputs($fichier_galerie_JSON,'[');
                     fputs($fichier_galerie_JSON,$galerieJSON);
                     fputs($fichier_galerie_JSON,']');
                     fclose($fichier_galerie_JSON);
                   }
                   else {
-                    $fichier_galerie_JSON=fopen('../data/'.$_POST[categorie].'/'.$_POST[galerie].'.json','r+');
+                    $fichier_galerie_JSON=fopen('../data/'.$categorie.'/'.$galerie.'.json','r+');
                     fseek($fichier_galerie_JSON,-1,SEEK_END);
                     fputs($fichier_galerie_JSON,','.$galerieJSON);
                     fputs($fichier_galerie_JSON,']');

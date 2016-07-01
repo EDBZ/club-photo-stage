@@ -1,0 +1,23 @@
+<div class="container">
+
+  <!-- <h1>{{galleryName}}</h1> -->
+
+  <a href="#/">retour index</a><br>
+
+  <pre class="test">
+    {{galeries}}
+    {{gal}}
+  </pre>
+
+  <!-- <div ng-repeat="gal in galeries" class="Row"> -->
+    <div ng-repeat="g in gal">
+      <div class="row col-sm-5" style="margin:5px">
+        <img ng-src="{{g.info_photo.actual_path}}" alt="" class="col-sm-6"/>
+        <pre>
+          {{g.id}}
+        </pre>
+      </div>
+    </div>
+ <!-- </div> -->
+
+</div>
