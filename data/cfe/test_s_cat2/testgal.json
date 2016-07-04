@@ -1,0 +1,23 @@
+[{
+    "id": "a058e",
+    "date_ajout": "4/07/2016",
+    "info_photo": {
+        "nom": "Monet-z.JPG",
+        "photographe": "bob",
+        "categorie": "cfe",
+        "s_categorie": "test_s_cat2",
+        "galerie": "testgal",
+        "actual_path": "../upload/cfe/test_s_cat2/testgal/a058ec8d4d65ab16430740101e998b9d.jpg"
+    }
+},{
+    "id": "09ca0",
+    "date_ajout": "4/07/2016",
+    "info_photo": {
+        "nom": "kand7.jpg",
+        "photographe": "bob",
+        "categorie": "cfe",
+        "s_categorie": "test_s_cat2",
+        "galerie": "testgal",
+        "actual_path": "../upload/cfe/test_s_cat2/testgal/09ca0907c9733a8f50ae9cc8697015cb.jpg"
+    }
+}]

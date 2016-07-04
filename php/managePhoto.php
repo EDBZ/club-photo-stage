@@ -144,10 +144,10 @@ if (!empty($_FILES['file'])) {
                   // ecriture données photo
                   $json_photo_arr = array('nom'=>$file['name'],
                                     'photographe'=>$_POST[user],
-                                    'categorie'=>$_POST[categorie],
-                                    'sous-categorie'=>$_POST[s_categorie],
-                                    'galerie'=>$_POST[galerie],
-                                    'actual_path'=>TARGET.$nomImage,
+                                    'categorie'=>$categorie,
+                                    's_categorie'=>$s_categorie,
+                                    'galerie'=>$galerie,
+                                    'path'=>TARGET.$nomImage,
                                     // 'marque'=>$marque,
                                     // 'modele'=>$modele,
                                     // 'focale'=>$focale,
@@ -158,16 +158,24 @@ if (!empty($_FILES['file'])) {
 
                   // écriture données galerie
                   $json_galerie_arr = array('id'=>$codeNomImage,
-                                      'date_ajout'=> date('j/m/Y'),
+                                      'date_ajout_photo'=> date('j/m/Y'),
                                       'info_photo'=>$json_photo_arr);
 
                   // ecriture données categorie
-                  $json_cat_arr = array('sous-categorie'=>$_POST[s_categorie],
-                    'nom_galerie'=>$_POST[galerie],
-                  'path'=>'../data/'.$categorie.'/'.$galerie.'.json');
+                  $json_cat_arr = array('s_categorie'=>$s_categorie,
+                  'date_ajout_gal'=> date('j/m/Y'),
+                  'path'=>'../data/'.$categorie.'/'.$s_categorie.'.json');
+
+                  // ecriture données s_categorie
+                  $json_s_cat_arr = array('galerie'=>$galerie,
+                  'path'=>'../data/'.$categorie.'/'.$s_categorie.'/'.$galerie.'.json');
+
 
                   // données galerie format JSON
                   $galerieJSON = json_encode($json_galerie_arr,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES,2 );
+
+                  // données s_categorie format JSON
+                  $s_catJSON = json_encode($json_s_cat_arr,JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES );
 
                   // données categorie format JSON
                   $catJSON = json_encode($json_cat_arr,JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES );
@@ -178,6 +186,14 @@ if (!empty($_FILES['file'])) {
                       exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
                     }
                   }
+
+                  // création dossier s_catégorie
+                  if( !is_dir('../data/'.$categorie.'/'.$s_categorie.'/') ) {
+                    if( !mkdir('../data/'.$categorie.'/'.$s_categorie.'/', 0777) ) {
+                      exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
+                    }
+                  }
+
 
                    // création et écriture répertoire données categorie
                   if(!file_exists('../data/'.$categorie.'.json')){
@@ -190,7 +206,7 @@ if (!empty($_FILES['file'])) {
                   else {
                     $readjson = json_decode(file_get_contents('../data/'.$categorie.'.json'),true);
 
-                      if(!in_array_r('../data/'.$categorie.'/'.$galerie.'.json', $readjson)){
+                      if(!in_array_r('../data/'.$categorie.'/'.$s_categorie.'.json', $readjson)){
                         $fichier_cat_JSON = fopen('../data/'.$categorie.'.json','r+');                    fseek($fichier_cat_JSON,-1,SEEK_END);
                         fputs($fichier_cat_JSON,','.$catJSON);
                         fputs($fichier_cat_JSON,']');
@@ -198,16 +214,36 @@ if (!empty($_FILES['file'])) {
                       }
                   };
 
+                  // création et écriture répertoire données s_categorie
+                 if(!file_exists('../data/'.$categorie.'/'.$s_categorie.'.json')){
+                   $fichier_s_cat_JSON = fopen('../data/'.$categorie.'/'.$s_categorie.'.json','w+');
+                   fputs($fichier_s_cat_JSON,'[');
+                   fputs($fichier_s_cat_JSON,$s_catJSON);
+                   fputs($fichier_s_cat_JSON,']');
+                   fclose($fichier_s_cat_JSON);
+                 }
+                 else {
+                   $reads_json = json_decode(file_get_contents('../data/'.$categorie.'/'.$s_categorie.'.json'),true);
+
+                     if(!in_array_r('../data/'.$categorie.'/'.$s_categorie.'/'.$galerie.'.json', $reads_json)){
+                       $fichier_s_cat_JSON = fopen('../data/'.$categorie.'/'.$s_categorie.'.json','r+');                    fseek($fichier_s_cat_JSON,-1,SEEK_END);
+                       fputs($fichier_s_cat_JSON,','.$s_catJSON);
+                       fputs($fichier_s_cat_JSON,']');
+                       fclose($fichier_s_cat_JSON);
+                     }
+                 };
+
+
                   // création et écriture répertoire données galerie
-                  if(!file_exists('../data/'.$categorie.'/'.$galerie.'.json')){
-                    $fichier_galerie_JSON = fopen('../data/'.$categorie.'/'.$galerie.'.json','w+');
+                  if(!file_exists('../data/'.$categorie.'/'.$s_categorie.'/'.$galerie.'.json')){
+                    $fichier_galerie_JSON = fopen('../data/'.$categorie.'/'.$s_categorie.'/'.$galerie.'.json','w+');
                     fputs($fichier_galerie_JSON,'[');
                     fputs($fichier_galerie_JSON,$galerieJSON);
                     fputs($fichier_galerie_JSON,']');
                     fclose($fichier_galerie_JSON);
                   }
                   else {
-                    $fichier_galerie_JSON=fopen('../data/'.$categorie.'/'.$galerie.'.json','r+');
+                    $fichier_galerie_JSON=fopen('../data/'.$categorie.'/'.$s_categorie.'/'.$galerie.'.json','r+');
                     fseek($fichier_galerie_JSON,-1,SEEK_END);
                     fputs($fichier_galerie_JSON,','.$galerieJSON);
                     fputs($fichier_galerie_JSON,']');

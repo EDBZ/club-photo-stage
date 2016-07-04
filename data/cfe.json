@@ -1,0 +1,7 @@
+[{
+    "s_categorie": "test_s_cat",
+    "path": "../data/cfe/test_s_cat.json"
+},{
+    "s_categorie": "test_s_cat2",
+    "path": "../data/cfe/test_s_cat2.json"
+}]

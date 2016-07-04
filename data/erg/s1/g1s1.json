@@ -1,0 +1,23 @@
+[{
+    "id": "fa544",
+    "date_ajout": "4/07/2016",
+    "info_photo": {
+        "nom": "tumblr_nh2xwnZgzv1s0061mo1_1280.jpg",
+        "photographe": "bob",
+        "categorie": "erg",
+        "s_categorie": "s1",
+        "galerie": "g1s1",
+        "path": "../upload/erg/s1/g1s1/fa5446920a71b15563b136f5ec6e52e5.jpg"
+    }
+},{
+    "id": "0701d",
+    "date_ajout": "4/07/2016",
+    "info_photo": {
+        "nom": "tumblr_nh2xe9zJ7Q1s0061mo1_1280.jpg",
+        "photographe": "bob",
+        "categorie": "erg",
+        "s_categorie": "s1",
+        "galerie": "g1s1",
+        "path": "../upload/erg/s1/g1s1/0701d4ed1a63a4732684c4a82b9a6374.jpg"
+    }
+}]
