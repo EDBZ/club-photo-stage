@@ -147,3 +147,29 @@ button {
 .choixUpload{
   color:black;
 }
+
+/* ==========================================================================
+   categorie
+   ========================================================================== */
+#galeries{
+  position: absolute;
+  top:50px;
+  left:40%;
+  height: 100%;
+  width: 60%;
+  background-color: grey;
+}
+.anim{
+  animation: slideInRight .5s both ease-in;
+}
+/* ==========================================================================
+   keyframes
+   ========================================================================== */
+   @keyframes slideInRight {
+     from {
+       transform: translateX(50%);
+     }
+     to {
+       transform: translateX(0);
+     }
+   }

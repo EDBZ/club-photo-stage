@@ -1,7 +1,9 @@
 [{
-    "s_categorie": "test_s_cat",
-    "path": "../data/cfe/test_s_cat.json"
+    "s_categorie": "cfess2",
+    "date_ajout_gal": "5/07/2016",
+    "path": "../data/cfe/cfess2.json"
 },{
-    "s_categorie": "test_s_cat2",
-    "path": "../data/cfe/test_s_cat2.json"
+    "s_categorie": "cfess1",
+    "date_ajout_gal": "5/07/2016",
+    "path": "../data/cfe/cfess1.json"
 }]

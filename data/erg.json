@@ -1,11 +1,9 @@
 [{
     "s_categorie": "s1",
+    "date_ajout_gal": "5/07/2016",
     "path": "../data/erg/s1.json"
 },{
     "s_categorie": "s2",
+    "date_ajout_gal": "5/07/2016",
     "path": "../data/erg/s2.json"
-},{
-    "s_categorie": "test",
-    "date_ajout_gal": "4/07/2016",
-    "path": "../data/erg/test.json"
 }]

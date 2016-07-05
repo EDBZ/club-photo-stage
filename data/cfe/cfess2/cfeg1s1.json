@@ -1,0 +1,23 @@
+[{
+    "id": "c2754",
+    "date_ajout_photo": "5/07/2016",
+    "info_photo": {
+        "nom": "tumblr_mqho4iasp51s0061mo1_1280.jpg",
+        "photographe": "bob",
+        "categorie": "cfe",
+        "s_categorie": "cfess2",
+        "galerie": "cfeg1s1",
+        "path": "../upload/cfe/cfess2/cfeg1s1/c27540d4e935a1c4be4059310c7ef314.jpg"
+    }
+},{
+    "id": "bb5e1",
+    "date_ajout_photo": "5/07/2016",
+    "info_photo": {
+        "nom": "slave-ship.jpg",
+        "photographe": "bob",
+        "categorie": "cfe",
+        "s_categorie": "cfess2",
+        "galerie": "cfeg1s1",
+        "path": "../upload/cfe/cfess2/cfeg1s1/bb5e1f9d7af28b63a2ec7281a9e8e66c.jpg"
+    }
+}]

@@ -35,6 +35,10 @@ var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnim
         templateUrl: 'views/upload.html',
         controller: 'uploadCtrl'
       })
+      .when('/gal',{
+        templateUrl: 'views/galerie.html',
+        controller:'galCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })

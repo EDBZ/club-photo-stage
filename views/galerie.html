@@ -1,0 +1,16 @@
+<div class="container">
+  <a href="#/">retour index</a><br>
+<hr>
+  <div ng-repeat="img in argentic">
+    <div style="margin-bottom:10px;" class="col-sm-3">
+      <img class="col-sm-12" ng-src="{{img.path}}" alt=""/>
+      <p>
+        {{img.name}}
+      </p>
+      <p>
+        {{img.about}}
+      </p>
+    </div>
+  </div>
+
+</div>

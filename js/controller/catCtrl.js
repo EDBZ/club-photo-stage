@@ -1,91 +1,116 @@
-app.controller('ergCtrl', ['$scope', '$http','getjson', function($scope, $http, getjson) {
-
-getjson.recupdata('/../data/erg.json')
+app.controller('ergCtrl', ['$scope', '$http', 'getjson', '$route', function($scope, $http, getjson, $route) {
+$scope.name = 'E.R.G.';
+$scope.galclass = 'erg';
+  getjson.recupdata('/../data/erg.json')
     .success(function(data) {
       $scope.categorie = data;
-      // recup path s_categorie
-      s_path = getjson.recupPathJson(categorie);
+      s_path = getjson.recupPathJson($scope.categorie);
       $scope.s_categorie = [];
       for (var prop in s_path) {
         getjson.recupdata(s_path[prop])
-        .success(function(data){
-          s_cat= data;
-          g_path = getjson.recupPathJson(s_cat);
-          $scope.s_categorie.push(g_path);
-          // for (var prop in $scope.galeries){
-          //   var gal = _.last($scope.galeries[prop]);
-          //   $scope.oneImg.push(gal);
-          // }
-        })
+          .success(function(data) {
+            s_cat = data;
+            g_path = getjson.recupPathJson(s_cat);
+            $scope.s_categorie.push(g_path);
+          })
       }
     });
-}])
-// $scope.s_categorie = [];
-// $scope.galeries = [];
-.controller('cfeCtrl', ['$scope', '$http','getjson', function($scope, $http, getjson) {
+  $scope.reloadRoute = function() {
+    $window.location.reload();
+  }
+  $scope.divanim = function(){
 
-getjson.recupdata('/../data/cfe.json')
-    .success(function(data) {
-      categorie = data;
-      path = getjson.recupPathJson(categorie);
-      $scope.galeries=[];
-      for (var prop in path) {
-        getjson.recupdata(path[prop])
-        .success(function(data){
-          var galerie= data;
-          $scope.galeries.push(galerie);
-        })
-      }
-    });
+  }
 }])
 
-.controller('customer_visitCtrl', ['$scope', '$http','getjson', function($scope, $http, getjson) {
-
-getjson.recupdata('/../data/customer_visit.json')
+.controller('cfeCtrl', ['$scope', '$http', 'getjson', '$route', function($scope, $http, getjson, $route) {
+$scope.name = 'C.F.E.';
+$scope.galclass = 'cfe';
+  getjson.recupdata('/../data/cfe.json')
     .success(function(data) {
-      categorie = data;
-      path = getjson.recupPathJson(categorie);
-      $scope.galeries=[];
-      for (var prop in path) {
-        getjson.recupdata(path[prop])
-        .success(function(data){
-          var galerie= data;
-          $scope.galeries.push(galerie);
-        })
+      $scope.categorie = data;
+      s_path = getjson.recupPathJson($scope.categorie);
+      $scope.s_categorie = [];
+      for (var prop in s_path) {
+        getjson.recupdata(s_path[prop])
+          .success(function(data) {
+            s_cat = data;
+            g_path = getjson.recupPathJson(s_cat);
+            $scope.s_categorie.push(g_path);
+          })
       }
     });
+  $scope.reloadRoute = function() {
+    $window.location.reload();
+  }
+
 }])
 
-.controller('charityCtrl', ['$scope', '$http','getjson', function($scope, $http, getjson) {
-
-getjson.recupdata('/../data/charity.json')
+.controller('customer_visitCtrl', ['$scope', '$http', 'getjson', '$route', function($scope, $http, getjson, $route) {
+$scope.name = 'Customer visit';
+$scope.galclass = 'customer';
+  getjson.recupdata('/../data/customer_visit.json')
     .success(function(data) {
-      categorie = data;
-      path = getjson.recupPathJson(categorie);
-      $scope.galeries=[];
-      for (var prop in path) {
-        getjson.recupdata(path[prop])
-        .success(function(data){
-          var galerie= data;
-          $scope.galeries.push(galerie);
-        })
+      $scope.categorie = data;
+      s_path = getjson.recupPathJson($scope.categorie);
+      $scope.s_categorie = [];
+      for (var prop in s_path) {
+        getjson.recupdata(s_path[prop])
+          .success(function(data) {
+            s_cat = data;
+            g_path = getjson.recupPathJson(s_cat);
+            $scope.s_categorie.push(g_path);
+          })
       }
     });
+  $scope.reloadRoute = function() {
+    $window.location.reload();
+  }
+
 }])
 
-.controller('internalCtrl', ['$scope', '$http','getjson', function($scope, $http, getjson) {
-
-getjson.recupdata('/../data/internal.json')
+.controller('charityCtrl', ['$scope', '$http', 'getjson', '$route', function($scope, $http, getjson, $route) {
+$scope.name = 'Charity';
+$scope.galclass = 'charity';
+  getjson.recupdata('/../data/charity.json')
     .success(function(data) {
-      categorie = data;
-      path = getjson.recupPathJson(categorie);
-      $scope.galeries=[];
-      for (var prop in path) {
-        getjson.recupdata(path[prop])
-        .success(function(data){
-          var galerie= data;
-          $scope.galeries.push(galerie);
-        })
+      $scope.categorie = data;
+      s_path = getjson.recupPathJson($scope.categorie);
+      $scope.s_categorie = [];
+      for (var prop in s_path) {
+        getjson.recupdata(s_path[prop])
+          .success(function(data) {
+            s_cat = data;
+            g_path = getjson.recupPathJson(s_cat);
+            $scope.s_categorie.push(g_path);
+          })
       }
     });
+  $scope.reloadRoute = function() {
+    $window.location.reload();
+  }
+
+}])
+
+.controller('internalCtrl', ['$scope', '$http', 'getjson', '$route', function($scope, $http, getjson, $route) {
+$scope.name = 'Internal';
+$scope.galclass = 'internal';
+  getjson.recupdata('/../data/internal.json')
+    .success(function(data) {
+      $scope.categorie = data;
+      s_path = getjson.recupPathJson($scope.categorie);
+      $scope.s_categorie = [];
+      for (var prop in s_path) {
+        getjson.recupdata(s_path[prop])
+          .success(function(data) {
+            s_cat = data;
+            g_path = getjson.recupPathJson(s_cat);
+            $scope.s_categorie.push(g_path);
+          })
+      }
+    });
+  $scope.reloadRoute = function() {
+    $window.location.reload();
+  }
+
 }]);

@@ -1,16 +1,18 @@
 <div class="container">
 
-  <!-- <h1>{{galleryName}}</h1> -->
-
   <a href="#/">retour index</a><br>
-
-  <pre class="test">
+<a href="#/gal">exemple galerie</a>
+  <h1>{{name}}</h1>
+  <!-- <pre class="test">
 <code>categorie : {{categorie}}</code>
-</pre>
-<div ng-repeat="s_categorie in categorie">
-  <a href="#/s_cat">
-    {{s_categorie.s_categorie}}
+</pre> -->
+<div ng-repeat="s_categorie in categorie" >
+  <a href="" ng-click="b=!b" ng-init="b=false">
+  <h3>  {{s_categorie.s_categorie}}</h3>
+  <div id="galeries" ng-show="b">
+    {{s_categorie.path}}
+  </div>
   </a>
+  <hr>
 </div>
-
 </div>
