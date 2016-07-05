@@ -6,4 +6,12 @@
     "s_categorie": "s2",
     "date_ajout_gal": "5/07/2016",
     "path": "../data/erg/s2.json"
+},{
+    "s_categorie": "test_s_cat",
+    "date_ajout_gal": "5/07/2016",
+    "path": "../data/erg/test_s_cat.json"
+},{
+    "s_categorie": "test",
+    "date_ajout_gal": "5/07/2016",
+    "path": "../data/erg/test.json"
 }]

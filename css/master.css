@@ -152,22 +152,43 @@ button {
    categorie
    ========================================================================== */
 #galeries{
+  /*padding: 10px;*/
   position: absolute;
   top:50px;
   left:40%;
-  height: 100%;
+  height: calc(100% - 50px);
   width: 60%;
-  background-color: grey;
+  background-color: #222;
+  border-left: 1px solid white;
+  overflow-y: scroll;
+  visibility: hidden;
 }
 .anim{
+  visibility: visible!important;
   animation: slideInRight .5s both ease-in;
+}
+.thumbcont{
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+position: relative;
+}
+.thumbgal{
+  height: 300px;
+}
+.thumbname{
+  position: relative;
+  top: 0;
+  margin: auto;
+  z-index: 10;
+  color: red;
 }
 /* ==========================================================================
    keyframes
    ========================================================================== */
    @keyframes slideInRight {
      from {
-       transform: translateX(50%);
+       transform: translateX(60%);
      }
      to {
        transform: translateX(0);

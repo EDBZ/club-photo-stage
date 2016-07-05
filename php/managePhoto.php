@@ -7,9 +7,9 @@ $galerie = strtolower(str_replace(' ','_',$_POST[galerie]));
 
 // Constantes=========================================================
 define('TARGET', '../upload/'.$categorie.'/'.$s_categorie.'/'.$galerie.'/');    // Repertoire cible
-define('MAX_SIZE', 2000);    // Taille max en koctets du fichier
-define('WIDTH_MAX', 2200);    // Largeur max de l'image en pixels
-define('HEIGHT_MAX', 2200);    // Hauteur max de l'image en pixels
+define('MAX_SIZE', 5000);    // Taille max en koctets du fichier
+define('WIDTH_MAX', 1024);    // Largeur max de l'image en pixels
+define('HEIGHT_MAX', 1024);    // Hauteur max de l'image en pixels
 
 // Reorganisation de $_FILE==========================================================
 function reArrayFiles(&$file_post) {

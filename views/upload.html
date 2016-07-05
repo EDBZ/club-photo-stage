@@ -1,7 +1,7 @@
 <a href="#/">retour index</a>
 
 <h4>Upload</h4>
-<div class="row">
+<!-- <div class="row">
   <pre class="test col-sm-4">
     EXIF : {{exif}}
   </pre>
@@ -11,16 +11,16 @@
   <pre class="test col-sm-4">
     FILE : {{files}}
   </pre>
-</div>
+</div> -->
 <hr>
 <div class="row form_upload">
 
 
 <form class="form-horizontal col-sm-6" role="form">
-  <div ngf-drop ng-model="files" ngf-resize="{width: 800, quality: .8, type: 'image/jpeg',  restoreExif: true}" ngf-resize-if="$width > 800" ngf-multiple="true" accept="image/*" class="drop-box">
+  <div ngf-drop ng-model="files" ngf-resize="{ type: 'image/jpeg',  restoreExif: true}"  ngf-multiple="true" ngf-keep="'disctinct'" accept="image/*" class="drop-box">
     <span>DROP HERE !</span>
   </div>
-  <button ngf-select="getExif(files)" ngf-resize="{width: 800, quality: .8, type: 'image/jpeg',  restoreExif: true}" ngf-resize-if="$width > 800" ng-model="files" ngf-multiple="true" accept="image/*" class="btn btn-default">Select</button><br>
+  <button ngf-select="getExif(files)" ngf-resize="type: 'image/jpeg',  restoreExif: true}"  ng-model="files" ngf-multiple="true" ngf-keep="'disctinct'" accept="image/*" class="btn btn-default">Select</button><br>
 </form>
 
 <form class="form-horizontal col-sm-6" role="form" data-toggle="validator">

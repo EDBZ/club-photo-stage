@@ -1,6 +1,6 @@
 app.controller('ergCtrl', ['$scope', '$http', 'getjson', '$route', function($scope, $http, getjson, $route) {
-$scope.name = 'E.R.G.';
-$scope.galclass = 'erg';
+  $scope.name = 'E.R.G.';
+  $scope.galclass = 'erg';
   getjson.recupdata('/../data/erg.json')
     .success(function(data) {
       $scope.categorie = data;
@@ -18,14 +18,23 @@ $scope.galclass = 'erg';
   $scope.reloadRoute = function() {
     $window.location.reload();
   }
-  $scope.divanim = function(){
 
+  $scope.divanim = function(path) {
+    $('#galeries')
+      .addClass('anim');
+    getjson.recupdata(path)
+      .success(function(data) {
+        $scope.galeries = getjson.last_imgs(data);
+
+      })
   }
+
 }])
 
+
 .controller('cfeCtrl', ['$scope', '$http', 'getjson', '$route', function($scope, $http, getjson, $route) {
-$scope.name = 'C.F.E.';
-$scope.galclass = 'cfe';
+  $scope.name = 'C.F.E.';
+  $scope.galclass = 'cfe';
   getjson.recupdata('/../data/cfe.json')
     .success(function(data) {
       $scope.categorie = data;
@@ -47,8 +56,8 @@ $scope.galclass = 'cfe';
 }])
 
 .controller('customer_visitCtrl', ['$scope', '$http', 'getjson', '$route', function($scope, $http, getjson, $route) {
-$scope.name = 'Customer visit';
-$scope.galclass = 'customer';
+  $scope.name = 'Customer visit';
+  $scope.galclass = 'customer';
   getjson.recupdata('/../data/customer_visit.json')
     .success(function(data) {
       $scope.categorie = data;
@@ -70,8 +79,8 @@ $scope.galclass = 'customer';
 }])
 
 .controller('charityCtrl', ['$scope', '$http', 'getjson', '$route', function($scope, $http, getjson, $route) {
-$scope.name = 'Charity';
-$scope.galclass = 'charity';
+  $scope.name = 'Charity';
+  $scope.galclass = 'charity';
   getjson.recupdata('/../data/charity.json')
     .success(function(data) {
       $scope.categorie = data;
@@ -93,8 +102,8 @@ $scope.galclass = 'charity';
 }])
 
 .controller('internalCtrl', ['$scope', '$http', 'getjson', '$route', function($scope, $http, getjson, $route) {
-$scope.name = 'Internal';
-$scope.galclass = 'internal';
+  $scope.name = 'Internal';
+  $scope.galclass = 'internal';
   getjson.recupdata('/../data/internal.json')
     .success(function(data) {
       $scope.categorie = data;

@@ -1,18 +1,25 @@
 <div class="container">
 
   <a href="#/">retour index</a><br>
-<a href="#/gal">exemple galerie</a>
+  <a href="#/gal">exemple galerie</a>
   <h1>{{name}}</h1>
   <!-- <pre class="test">
 <code>categorie : {{categorie}}</code>
 </pre> -->
-<div ng-repeat="s_categorie in categorie" >
-  <a href="" ng-click="b=!b" ng-init="b=false">
-  <h3>  {{s_categorie.s_categorie}}</h3>
-  <div id="galeries" ng-show="b">
-    {{s_categorie.path}}
+  <div ng-repeat="s_categorie in categorie">
+    <a href="" ng-click="divanim(s_categorie.path)">
+      <h3>
+        {{s_categorie.s_categorie}}</h3>
+    </a>
+    <div id="galeries">
+      <h3>Sélectionner une galerie :</h3>
+      <hr>
+      <div ng-repeat="gal in galeries" class="col-sm-6 thumbcont">
+        <img ng-src="{{gal.path}}" alt="" class="thumbgal"/>
+        <p class="thumbname">
+          {{gal.galerie}}
+        </p>
+      </div>
+    </div>
   </div>
-  </a>
-  <hr>
-</div>
 </div>
