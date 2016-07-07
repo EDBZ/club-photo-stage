@@ -1,0 +1,69 @@
+[{
+    "id": "990c7",
+    "date_ajout_photo": "6/07/2016",
+    "info_photo": {
+        "nom": "IMG_9754-copie1.jpg",
+        "photographe": "hshsd",
+        "categorie": "erg",
+        "s_categorie": "erg_s_gal",
+        "galerie": "erg_s_gal_gal_test_4",
+        "path": "../upload/erg/erg_s_gal/erg_s_gal_gal_test_4/990c77b944a969c92c0922d96916669f.jpg",
+        "marque": "NIKON",
+        "modele": "E4600",
+        "focale": null,
+        "vit_obt": "1/174",
+        "iso": "50",
+        "datePDV": "2006:06:13 15:44:45"
+    }
+},{
+    "id": "0db91",
+    "date_ajout_photo": "6/07/2016",
+    "info_photo": {
+        "nom": "DSCN0614_small.jpg",
+        "photographe": "hshsd",
+        "categorie": "erg",
+        "s_categorie": "erg_s_gal",
+        "galerie": "erg_s_gal_gal_test_4",
+        "path": "../upload/erg/erg_s_gal/erg_s_gal_gal_test_4/0db9131ec0736d3f956a2f5ba94cf379.jpg",
+        "marque": "Canon",
+        "modele": "Canon EOS 5D Mark II",
+        "focale": null,
+        "vit_obt": "1/2500",
+        "iso": "250",
+        "datePDV": "2013:07:08 23:50:44"
+    }
+},{
+    "id": "e2347",
+    "date_ajout_photo": "6/07/2016",
+    "info_photo": {
+        "nom": "dsc_09827.jpg",
+        "photographe": "hshsd",
+        "categorie": "erg",
+        "s_categorie": "erg_s_gal",
+        "galerie": "erg_s_gal_gal_test_4",
+        "path": "../upload/erg/erg_s_gal/erg_s_gal_gal_test_4/e2347e14d03cf0ad46c3021e652da4d2.jpg",
+        "marque": "NIKON CORPORATION",
+        "modele": "NIKON D100 ",
+        "focale": null,
+        "vit_obt": "1/400",
+        "iso": null,
+        "datePDV": "2004:05:22 09:32:21"
+    }
+},{
+    "id": "b885a",
+    "date_ajout_photo": "6/07/2016",
+    "info_photo": {
+        "nom": "223090383.jpg",
+        "photographe": "hshsd",
+        "categorie": "erg",
+        "s_categorie": "erg_s_gal",
+        "galerie": "erg_s_gal_gal_test_4",
+        "path": "../upload/erg/erg_s_gal/erg_s_gal_gal_test_4/b885a075471b80f9a1fb10e22d075a4a.jpg",
+        "marque": "Canon",
+        "modele": "Canon EOS 7D",
+        "focale": null,
+        "vit_obt": "1/400",
+        "iso": "100",
+        "datePDV": "2011:10:26 15:24:22"
+    }
+}]

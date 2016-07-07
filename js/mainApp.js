@@ -3,7 +3,7 @@ var underscore = angular.module('underscore', []);
          return window._; //Underscore should be loaded on the page
      });
 
-var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnimate',  'ngFileUpload','underscore','angular-loading-bar'])
+var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnimate',  'ngFileUpload','underscore','angular-loading-bar','angularGrid'])
 
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -11,33 +11,17 @@ var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnim
         templateUrl: 'views/main_gallery.html',
         controller: 'mainCtrl',
       })
-      .when('/erg', {
+      .when('/:categorie',{
         templateUrl: 'views/categorie.html',
-        controller: 'ergCtrl'
+        controller: 'catCtrl'
       })
-      .when('/cfe', {
-        templateUrl: 'views/categorie.html',
-        controller: 'cfeCtrl'
-      })
-      .when('/customer_visit', {
-        templateUrl: 'views/categorie.html',
-        controller: 'customer_visitCtrl'
-      })
-      .when('/charity', {
-        templateUrl: 'views/categorie.html',
-        controller: 'charityCtrl'
-      })
-      .when('/internal', {
-        templateUrl: 'views/categorie.html',
-        controller: 'internalCtrl'
-      })
-      .when('/upload', {
-        templateUrl: 'views/upload.html',
-        controller: 'uploadCtrl'
-      })
-      .when('/gal',{
-        templateUrl: 'views/galerie.html',
+      .when('/:categorie/:s_categorie/:galerie',{
+        templateUrl:'views/galerie.html',
         controller:'galCtrl'
+      })
+      .when('/admin/admin',{
+        templateUrl:'views/admin.html',
+        controller:'adminCtrl'
       })
       .otherwise({
         redirectTo: '/'

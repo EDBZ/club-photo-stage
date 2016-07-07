@@ -1,4 +1,4 @@
-app.controller('mainCtrl', function($scope, $http) {
+app.controller('mainCtrl', function($scope, $http, $route) {
 
   // variables globales=======================
 
@@ -16,6 +16,13 @@ app.controller('mainCtrl', function($scope, $http) {
   };
 
   // $http.get fichiers JSON==========================================
+
+  $scope.categorie =
+    ['erg',
+    'cfe',
+    'customer_visit',
+    'charity',
+    'internal'];
 
   $http.get('/../data/datatest/argentic.json')
     .success(function(data) {
@@ -64,6 +71,7 @@ app.controller('mainCtrl', function($scope, $http) {
       // log error
     });
 
+$scope.$emit('angular-xGallerify.refresh');
 
 
   $scope.firstId = function(json) {

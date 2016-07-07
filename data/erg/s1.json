@@ -1,16 +1,4 @@
 [{
-    "galerie": "g1s1",
-    "path": "../data/erg/s1/g1s1.json"
-},{
-    "galerie": "inner",
-    "path": "../data/erg/s1/inner.json"
-},{
-    "galerie": "test",
-    "path": "../data/erg/s1/test.json"
-},{
-    "galerie": "perso",
-    "path": "../data/erg/s1/perso.json"
-},{
-    "galerie": "out",
-    "path": "../data/erg/s1/out.json"
+    "galerie": "testgal",
+    "path": "../data/erg/s1/testgal.json"
 }]

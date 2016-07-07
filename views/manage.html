@@ -1,0 +1,107 @@
+<h3>Supprimer une s_catégorie</h3>
+<pre class="test">
+  {{lcategorie0}}
+  {{s_categorie0}}
+</pre>
+<form class="form-horizontal" role="form" data-toggle="validator">
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="lcategorie">Categorie:</label>
+    <div class="col-sm-8">
+      <input required list="list_categorie0" class="form-control" id="lcategorie0" name="lcategorie0" value="Nom de la categorie" ng-model="lcategorie0" placeholder="Nom de la categorie">
+      <datalist id="list_categorie0" >
+        <option ng-repeat="cat in lcategorieG" value="{{cat.value}}" name="{{cat.name}}"></option>
+      </datalist>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="s_categorie">Sous-categorie:</label>
+    <div class="col-sm-8">
+      <input required list="list_s_categorie0" class="form-control" id="s_categorie0" name="s_categorie0" value="Nom de la sous-categorie" ng-model="s_categorie0" placeholder="Nom de la sous-categorie">
+      <datalist id="list_s_categorie0" ng-repeat="s_cat0 in categorie0">
+        <option value="{{s_cat0.s_categorie}}"></option>
+      </datalist>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
+      <button data-disable="true" type="submit" ng-click="suppr_s_cat()" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+<hr>
+
+<!-- ============================================================================== -->
+
+<h3>Supprimer une galerie</h3>
+<form class="form-horizontal" role="form" data-toggle="validator">
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="lcategorie">Categorie:</label>
+    <div class="col-sm-8">
+      <input required list="list_categorie1" class="form-control" id="lcategorie1" name="lcategorie1" value="Nom de la categorie" ng-model="lcategorie1" placeholder="Nom de la categorie">
+      <datalist id="list_categorie1">
+        <option value="ERG"></option>
+        <option value="CFE"></option>
+        <option value="Customer Visit"></option>
+        <option value="Charity"></option>
+        <option value="Internal"></option>
+      </datalist>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="s_categorie">Sous-categorie:</label>
+    <div class="col-sm-8">
+      <input required type="text" class="form-control" id="s_categorie1" name="s_categorie" value="Nom de la sous-categorie" ng-model="s_categorie" placeholder="Nom de la sous-categorie">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="galerie">Galerie:</label>
+    <div class="col-sm-8">
+      <input required type="text" class="form-control" id="galerie1" placeholder="Nom de la galerie" name="galerie" value="Nom de la galerie" ng-model="galerie">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
+      <button data-disable="true" type="submit" ng-click="submit()" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+<hr>
+
+<!-- ============================================================================== -->
+
+<h3>Supprimer des photos</h3>
+<form class="form-horizontal" role="form" data-toggle="validator">
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="lcategorie">Categorie:</label>
+    <div class="col-sm-8">
+      <input required list="list_categorie" class="form-control" id="lcategorie2" name="lcategorie" value="Nom de la categorie" ng-model="lcategorie" placeholder="Nom de la categorie">
+      <datalist id="list_categorie2">
+        <option value="ERG"></option>
+        <option value="CFE"></option>
+        <option value="Customer Visit"></option>
+        <option value="Charity"></option>
+        <option value="Internal"></option>
+      </datalist>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="s_categorie">Sous-categorie:</label>
+    <div class="col-sm-8">
+      <input required type="text" class="form-control" id="s_categorie2" name="s_categorie" value="Nom de la sous-categorie" ng-model="s_categorie" placeholder="Nom de la sous-categorie">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="galerie">Galerie:</label>
+    <div class="col-sm-8">
+      <input required type="text" class="form-control" id="galerie2" placeholder="Nom de la galerie" name="galerie" value="Nom de la galerie" ng-model="galerie">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
+      <button data-disable="true" type="submit" ng-click="submit()" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>

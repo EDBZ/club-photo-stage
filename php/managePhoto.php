@@ -8,8 +8,8 @@ $galerie = strtolower(str_replace(' ','_',$_POST[galerie]));
 // Constantes=========================================================
 define('TARGET', '../upload/'.$categorie.'/'.$s_categorie.'/'.$galerie.'/');    // Repertoire cible
 define('MAX_SIZE', 5000);    // Taille max en koctets du fichier
-define('WIDTH_MAX', 1024);    // Largeur max de l'image en pixels
-define('HEIGHT_MAX', 1024);    // Hauteur max de l'image en pixels
+define('WIDTH_MAX', 5000);    // Largeur max de l'image en pixels
+define('HEIGHT_MAX', 5000);    // Hauteur max de l'image en pixels
 
 // Reorganisation de $_FILE==========================================================
 function reArrayFiles(&$file_post) {
@@ -73,9 +73,11 @@ if( !is_dir(TARGET) ) {
 }
 if (!empty($_FILES['file'])) {
     $file_ary = reArrayFiles($_FILES['file']);
+    $j = -1;
 
     foreach ($file_ary as $file) {
-
+$j++;
+        $exif = $_POST[exif];
         // Recuperation de l'extension du fichier===================
         $extension  = pathinfo($file['name'], PATHINFO_EXTENSION);
         $extension = strtolower($extension);
@@ -148,12 +150,12 @@ if (!empty($_FILES['file'])) {
                                     's_categorie'=>$s_categorie,
                                     'galerie'=>$galerie,
                                     'path'=>TARGET.$nomImage,
-                                    // 'marque'=>$marque,
-                                    // 'modele'=>$modele,
-                                    // 'focale'=>$focale,
-                                    // 'vit_obt'=>$vit_obt,
-                                    // 'iso'=>$iso,
-                                    // 'datePDV'=>$datePDV
+                                    'marque'=>$exif[$j][marque],
+                                    'modele'=>$exif[$j][modele],
+                                    'focale'=>($exif[$j][fnumber][numerator]/$exif[$j][fnumber][denominator]),
+                                    'vit_obt'=>$exif[$j][vit_obt],
+                                    'iso'=>$exif[$j][iso],
+                                    'datePDV'=>$exif[$j][datePDV],
                                   );
 
                   // écriture données galerie
@@ -251,6 +253,7 @@ if (!empty($_FILES['file'])) {
                   };
 
                   // ================================================================================
+
                     $message='upload réussi !';
                 }
                 else
@@ -283,8 +286,7 @@ if (!empty($_FILES['file'])) {
         }
       }
     }
-
-        echo $message;
-        echo print_r($array_name_file);
+echo $message;
+        // echo '  mess/'.$message.'/mess   '.'  j/'.print_r($j).'/j  '.'  exif/'.print_r($exif).'/exif  '.'  name/'.print_r($array_name_file).'/name  '.'  file/'.print_r($file_ary).'/file  '
 
    ?>

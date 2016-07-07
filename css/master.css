@@ -19,7 +19,7 @@ html, body {
 .test {
   width: 100%;
   margin: 5px;
-  background-color: red;
+  background-color: green;
   color: black;
   display: inline-block;
 }
@@ -77,7 +77,41 @@ nav a {
 #gallery {
   padding: 10px 0;
 }
-
+.dynamic-grid{
+     position: relative;
+     display: none;
+ }
+ .dynamic-grid.angular-grid{
+     display: block;
+ }
+ .grid {
+     /*border: 1px solid #cccccc;*/
+     position: absolute;
+     list-style: none;
+     background: #ffffff;
+     box-sizing: border-box;
+     -moz-box-sizing : border-box;
+     -webkit-transition: all 0.6s ease-out;
+     transition: all 0.6s ease-out;
+     overflow: hidden;
+     color:black;
+ }
+ .grid-img {
+     width: 100%;
+     vertical-align: middle;
+     -webkit-transition: opacity 0.6s ease-out;
+     transition: opacity 0.6s ease-out;
+     background-color: #fff;
+     opacity: 0;
+     visibility: hidden;
+ }
+ .grid img{
+   width: 100%;
+ }
+ .grid-img.img-loaded{
+     visibility: visible;
+     opacity: 1;
+ }
 /* ==========================================================================
    modal
    ========================================================================== */
@@ -152,7 +186,6 @@ button {
    categorie
    ========================================================================== */
 #galeries{
-  /*padding: 10px;*/
   position: absolute;
   top:50px;
   left:40%;
@@ -168,20 +201,24 @@ button {
   animation: slideInRight .5s both ease-in;
 }
 .thumbcont{
-  height: 200px;
-  width: 200px;
+  display: flex;
+
+  height: 150px;
+  width: 150px;
   overflow: hidden;
 position: relative;
+margin-bottom: 15px;
 }
 .thumbgal{
-  height: 300px;
+  height: 200px;
 }
 .thumbname{
-  position: relative;
+  position: absolute;
   top: 0;
-  margin: auto;
-  z-index: 10;
-  color: red;
+left: 10px;
+ z-index: 50;
+  color: white;
+  font-size: 15px;
 }
 /* ==========================================================================
    keyframes

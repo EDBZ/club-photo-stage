@@ -11,14 +11,17 @@
       <h3>
         {{s_categorie.s_categorie}}</h3>
     </a>
+    <hr>
     <div id="galeries">
       <h3>Sélectionner une galerie :</h3>
       <hr>
       <div ng-repeat="gal in galeries" class="col-sm-6 thumbcont">
-        <img ng-src="{{gal.path}}" alt="" class="thumbgal"/>
-        <p class="thumbname">
-          {{gal.galerie}}
-        </p>
+        <a href="#/{{gal.categorie}}/{{gal.s_categorie}}/{{gal.galerie}}">
+          <img ng-src="{{gal.path}}" alt="" class="thumbgal"/>
+          <p class="thumbname">
+            {{gal.galerie}}
+          </p>
+        </a>
       </div>
     </div>
   </div>

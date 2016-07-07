@@ -8,7 +8,7 @@
     <title>ERG Photo Dell</title>
   <!-- css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/src/loading-bar.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
 
     <!--[if lt IE 9]> <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script> <![endif]-->
@@ -17,32 +17,31 @@
 
     <div ng-include src="header.url" id="nav_blank"></div>
 
-    <div class="container" ng-view></div>
+    <div class="container" ng-view onload="refresh()"></div>
 
     <!-- scripts bower gen-->
     <script src="bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
-    <script src="bower_components/xGallerify/dist/jquery.xgallerify.min.js" charset="utf-8"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="bower_components/underscore/underscore-min.js" charset="utf-8"></script>
     <script src="bower_components/exif-js/exif.js" charset="utf-8"></script>
-    <script src="bower_components/validator.js/dist/validator.min.js" charset="utf-8"></script>
+    <script src="bower_components/xGallerify/src/jquery.xgallerify.js" charset="utf-8"></script>
     <!-- script bower Ng -->
     <script src="bower_components/angular/angular.min.js" charset="utf-8"></script>
+    <script src="bower_components/angular-xGallerify/src/angular-xgallerify.js" charset="utf-8"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js" charset="utf-8"></script>
     <script src="bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
-    <script src="bower_components/angular-xGallerify/dist/angular-xgallerify.min.js" charset="utf-8"></script>
-    <script src="bower_components/angular-loading-bar/build/loading-bar.min.js" charset="utf-8"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.min.js" charset="utf-8"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js" charset="utf-8"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
+    <script src="bower_components/angular-loading-bar/src/loading-bar.js" charset="utf-8"></script>
+    <script src="bower_components/angulargrid/angulargrid.js" charset="utf-8"></script>
+    <!-- // <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js" charset="utf-8"></script>
+    // <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf-8"></script> -->
     <!-- my scripts -->
     <script src="js/mainApp.js" charset="utf-8"></script>
     <script src="js/controller/mainCtrl.js" charset="utf-8"></script>
-    <script src="js/controller/uploadCtrl.js" charset="utf-8"></script>
+    <script src="js/controller/adminCtrl.js" charset="utf-8"></script>
     <script src="js/controller/catCtrl.js" charset="utf-8"></script>
     <script src="js/controller/galCtrl.js" charset="utf-8"></script>
     <script src="js/service/getjson.js" charset="utf-8"></script>
-    <script src="js/animation/divgalanim.js" charset="utf-8"></script>
     <!-- js général -->
     <script src="js/myjs.js" charset="utf-8"></script>
   </body>

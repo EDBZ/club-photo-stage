@@ -1,16 +1,20 @@
 <div class="container">
   <a href="#/">retour index</a><br>
 <hr>
-  <div ng-repeat="img in argentic">
-    <div style="margin-bottom:10px;" class="col-sm-3">
-      <img class="col-sm-12" ng-src="{{img.path}}" alt=""/>
+<ul class="dynamic-grid" angular-grid="pics" ad-grid-width="200" ad-gutter-size="10" ag-angular-grid-id="gallery" ad-refresh-on-img-load="false" >
+<!-- <li  class="grid" data-ng-clock> -->
+  <li  class="grid" data-ng-clock data-ng-repeat="img in images">
+
+  <!-- <div ng-repeat="img in images"  data-xgallerify="{ 'margin':5, 'mode':'flickr'}"> -->
+      <img ng-src="{{img.info_photo.path}}" alt=""/>
       <p>
-        {{img.name}}
+        {{img.id}}
       </p>
       <p>
-        {{img.about}}
+        {{img.info_photo.photographe}}
       </p>
-    </div>
+</li>
+    </ul>
   </div>
 
 </div>

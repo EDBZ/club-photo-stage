@@ -1,16 +1,49 @@
-<div ng-include src="menu_gallery.url"></div>
+<!-- <div ng-include src="menu_gallery.url"></div> -->
 <!-- <script type="text/ng-template" id="menu_gallery.html"></script> -->
 
-<div class="container">
-  <div data-xgallerify="{ 'margin':5, 'mode':'flickr', 'debounceLoad':'true','debounceTime':'200', 'lastRow':'fullwidth'}" id="gallery">
-    <a href=""><img ng-src="{{firstPath(argentic)}}" alt=""/></a>
-    <a href=""><img ng-src="{{firstPath(building)}}" alt=""/></a>
-    <a href=""><img ng-src="{{firstPath(cemetery)}}" alt=""/></a>
-    <a href=""><img ng-src="{{firstPath(monument)}}" alt=""/></a>
-    <a href=""><img ng-src="{{firstPath(people)}}" alt=""/></a>
-    <a href=""><img ng-src="{{firstPath(sea)}}" alt=""/></a>
-    <a href=""><img ng-src="{{firstPath(monument)}}" alt=""/></a>
-    <a href=""><img ng-src="{{firstPath(building)}}" alt=""/></a>
-    <a href=""><img ng-src="{{firstPath(people)}}" alt=""/></a>
-  </div>
+<div class="container" id="galcontainer">
+  <!-- <div xgallerify="{'margin':5,'mode':'flickr','lastRow':'adjust'}" onload="reloadRoute()" id="gallery">
+      <a href=""><img ng-src="{{firstPath(argentic)}}" alt=""/></a>
+      <a href=""><img ng-src="{{firstPath(building)}}" alt=""/></a>
+      <a href=""><img ng-src="{{firstPath(cemetery)}}" alt=""/></a>
+      <a href=""><img ng-src="{{firstPath(monument)}}" alt=""/></a>
+      <a href=""><img ng-src="{{firstPath(people)}}" alt=""/></a>
+      <a href=""><img ng-src="{{firstPath(sea)}}" alt=""/></a>
+      <a href=""><img ng-src="{{firstPath(monument)}}" alt=""/></a>
+      <a href=""><img ng-src="{{firstPath(building)}}" alt=""/></a>
+      <a href=""><img ng-src="{{firstPath(people)}}" alt=""/></a>
+    </div> -->
+  <ul class="dynamic-grid" angular-grid="pics" ad-grid-width="300" ad-gutter-size="10" ag-angular-grid-id="gallery" ad-refresh-on-img-load="false" performant-scroll="true" scroll-container="#galcontainer">
+    <!-- <li  class="grid" data-ng-clock> -->
+    <li class="grid" data-ng-clock>
+      <a href=""><img class="grid-img" ng-src="{{firstPath(argentic)}}" alt=""/></a>
+    </li>
+    <li class="grid" data-ng-clock>
+      <a href=""><img class="grid-img" ng-src="{{firstPath(building)}}" alt=""/></a>
+    </li>
+    <li class="grid" data-ng-clock>
+      <a href=""><img class="grid-img" ng-src="{{firstPath(cemetery)}}" alt=""/></a>
+    </li>
+    <li class="grid" data-ng-clock>
+      <a href=""><img class="grid-img" ng-src="{{firstPath(monument)}}" alt=""/></a>
+    </li>
+    <li class="grid" data-ng-clock>
+      <a href=""><img class="grid-img" ng-src="{{firstPath(people)}}" alt=""/></a>
+    </li>
+    <li class="grid" data-ng-clock>
+      <a href=""><img class="grid-img" ng-src="{{firstPath(sea)}}" alt=""/></a>
+    </li>
+    <li class="grid" data-ng-clock>
+      <a href=""><img class="grid-img" ng-src="{{firstPath(monument)}}" alt=""/></a>
+    </li>
+    <li class="grid" data-ng-clock>
+      <a href=""><img class="grid-img" ng-src="{{firstPath(building)}}" alt=""/></a>
+    </li>
+    <li class="grid" data-ng-clock>
+      <a href=""><img class="grid-img" ng-src="{{firstPath(people)}}" alt=""/></a>
+    </li>
+
+    <!-- <img src="{{pic.media.m}}" class="grid-img" data-actual-width = "{{pic.actualWidth}}"  data-actual-height="{{pic.actualHeight}}" /> -->
+    <!-- </li> -->
+  </ul>
 </div>
