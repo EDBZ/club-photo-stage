@@ -1,13 +1,7 @@
-app.controller('adminCtrl', ['$scope', 'Upload', '$timeout', '$http', function($scope, Upload, $timeout, $http) {
+app.controller('uploadCtrl', ['$scope', 'Upload', '$timeout', '$http', function($scope, Upload, $timeout, $http) {
+  $scope.test='test';
 
 
-  // $scope globaux=================================================================
-  $scope.lcategorieG = [{'value':'ERG','name':'erg'},
-  {'value':'CFE','name':'cfe'},
-  {'value':'Customer Visit','name':'customer_visit'},
-  {'value':'Charity','name':'charity'},
-  {'value':'Internal','name':'internal'}];
-  
   // include=========================================================================
   $scope.upload = {
     name: "upload.html",
@@ -17,6 +11,7 @@ app.controller('adminCtrl', ['$scope', 'Upload', '$timeout', '$http', function($
     name: "manage.html",
     url: "../views/manage.html"
   };
+
   // recup EXIF =====================================================================
   $scope.getExif = function(files) {
     $scope.files = files;
@@ -37,14 +32,12 @@ app.controller('adminCtrl', ['$scope', 'Upload', '$timeout', '$http', function($
     return $scope.exif;
   };
 
-
   // upload=======================================================
   $scope.uploadFiles = function(files) {
-
     if (files && files.length) {
       $scope.files = files;
       Upload.upload({
-          url: 'php/managePhoto.php',
+          url: './php/upload.php',
           method: 'POST',
           file: files,
           data: {
@@ -69,21 +62,11 @@ app.controller('adminCtrl', ['$scope', 'Upload', '$timeout', '$http', function($
         });
     }
   };
-  // recup info suppr==============================================================
-  // this.lcategorie0;
-  // this.s_categorie0;
 
   // envoie des données par SUBMIT ================================================
   $scope.submit = function() {
     $scope.uploadFiles($scope.files)
+
   };
 
-  // fonctions de suppressions=====================================================
-  $scope.suppr_s_cat = function() {
-// getjson.recupdata('/../data/'+$scope.lcategorie0.toLowerCase()+'.json')
-// .success(function(data){
-//   $scope.test = data;
-// })
-// alert($scope.test)
-  }
 }]);

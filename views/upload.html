@@ -1,11 +1,8 @@
-
+<div ng-controller="uploadCtrl">
     <h5>{{result}}</h5>
     <div class="row">
-      <!-- <pre class="test col-sm-4">
-        EXIF : {{exif}}
-      </pre> -->
-      <!-- <pre class="test col-sm-4">
-        RESULT PHP : {{result}}
+      <!-- <pre class="test">
+        {{test}}
       </pre> -->
     </div>
     <div class="row form_upload">
@@ -24,7 +21,7 @@
         <div class="col-sm-8">
           <input required list="list_categorie" class="form-control" id="lcategorie" name="lcategorie" value="Nom de la categorie"  ng-model="lcategorie" placeholder="Nom de la categorie">
           <datalist id="list_categorie">
-            <option ng-repeat="cat in lcategorieG" value="{{cat.value}}" name="{{cat.name}}"></option>
+            <option ng-repeat="cat in lcategorieG" value="{{cat.name}}" name="{{cat.name}}"></option>
           </datalist>
         </div>
       </div>
@@ -60,7 +57,6 @@
         <div class="test" ng-include="test.url"></div>
         <img class="thumb" ngf-src="f" ngf-background="f" ngf-resize="{width: 200, quality: 0.9}"/><br>
         <span class="thumbName">{{f.name}}</span><br>
-        <!-- <input type="text" name="legende" value="Entrez une légende" ng-model="légende" class="choixUpload"> -->
       </div>
     </div>
-<!-- multiple ngf-include-dir="true" -->
+</div>

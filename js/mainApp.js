@@ -20,8 +20,7 @@ var app = angular.module('mainApp', ['jtt_angular_xgallerify','ngRoute', 'ngAnim
         controller:'galCtrl'
       })
       .when('/admin/admin',{
-        templateUrl:'views/admin.html',
-        controller:'adminCtrl'
+        templateUrl:'views/admin.html'
       })
       .otherwise({
         redirectTo: '/'

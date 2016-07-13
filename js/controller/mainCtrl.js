@@ -1,7 +1,22 @@
 app.controller('mainCtrl', function($scope, $http, $route) {
 
-  // variables globales=======================
-
+  // $scope globaux=================================================================
+  $scope.lcategorieG = [{
+    'name': 'ERG',
+    'value': 'erg'
+  }, {
+    'name': 'CFE',
+    'value': 'cfe'
+  }, {
+    'name': 'Customer Visit',
+    'value': 'customer_visit'
+  }, {
+    'name': 'Charity',
+    'value': 'charity'
+  }, {
+    'name': 'Internal',
+    'value': 'internal'
+  }];
 
   // includes==============================================
 
@@ -13,6 +28,16 @@ app.controller('mainCtrl', function($scope, $http, $route) {
   $scope.menu_gallery = {
     name: "menu_gallery.html",
     url: "../views/menu_gallery.html"
+  };
+
+  $scope.upload = {
+    name: "upload.html",
+    url: "../views/upload.html"
+  };
+
+  $scope.suppr = {
+    name: "suppr.html",
+    url: "../views/suppr.html"
   };
 
   // $http.get fichiers JSON==========================================
@@ -71,7 +96,6 @@ app.controller('mainCtrl', function($scope, $http, $route) {
       // log error
     });
 
-$scope.$emit('angular-xGallerify.refresh');
 
 
   $scope.firstId = function(json) {

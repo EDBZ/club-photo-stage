@@ -76,7 +76,7 @@ if (!empty($_FILES['file'])) {
     $j = -1;
 
     foreach ($file_ary as $file) {
-$j++;
+        $j++;
         $exif = $_POST[exif];
         // Recuperation de l'extension du fichier===================
         $extension  = pathinfo($file['name'], PATHINFO_EXTENSION);
@@ -160,6 +160,7 @@ $j++;
 
                   // écriture données galerie
                   $json_galerie_arr = array('id'=>$codeNomImage,
+                                      'newName'=>$nomImage,
                                       'date_ajout_photo'=> date('j/m/Y'),
                                       'info_photo'=>$json_photo_arr);
 
